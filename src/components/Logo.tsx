@@ -2,6 +2,7 @@ import Link from 'next/link'
 import React from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image';
+import avatarVidal from '../../public/images/vidal.png'
 const Motionlink = motion(Link);
 
 const Logo = () => {
@@ -17,7 +18,7 @@ const Logo = () => {
       transition:{duration:1.5},
       }}>
        <Image
-      src="https://res.cloudinary.com/vidalalvarez/image/upload/v1684530528/avatar/vidal_zjwttv.png"
+      src={avatarVidal}
       width={100}
       height={100}
       className='rounded-full'
