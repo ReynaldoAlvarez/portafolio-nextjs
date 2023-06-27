@@ -30,10 +30,10 @@ const CustomMobileLink = ({href,className, title, toogle}:TCustomLink)=>{
     pathname
   }
 return (
-<button  className={`${className} relative group  dark:text-light  my-2` } onClick={handleClick}>
+<Link  href={href} className={`${className} relative group  dark:text-light  my-2` } onClick={handleClick}>
   {title}
   <span className={`h-[1px] inline-block  bg-light absolute left-0 -bottom-0.5 group-hover:w-full transition-[width] ease duration-200 ${pathname === href ? 'w-full':'w-0'} `}>&nbsp;</span>
-</button>
+</Link>
 )
 
 
@@ -48,7 +48,7 @@ const NavBar = () => {
   return (
     <header
     className=' w-full px-32 py-8 font-medium items-center justify-between flex text-dark relative z-0 lg:px-16 md:px-12 sm:px-8'>
-      <button className='flex-col justify-start items-start hidden lg:left-0 md:left-0 bg-dark' onClick={handleClick}>
+      <button className='flex-col justify-start items-start hidden lg:flex lg:left-0 md:left-0 ' onClick={handleClick}>
         <span className={`bg-dark dark:bg-light  transition-all duration-300 ease-out h-0.5 w-6 rounded-sm ${isOpen ? ' rotate-45 translate-y-1' : '-translate-y-0.5'}`}></span>
         <span className={`bg-dark dark:bg-light  transition-all duration-300 ease-out h-0.5 w-6 rounded-sm my-0.5 ${isOpen ? 'opacity-0': 'opacity-100'}`}></span>
         <span className={`bg-dark dark:bg-light  transition-all duration-300 ease-out h-0.5 w-6 rounded-sm ${isOpen ?'-rotate-45 -translate-y-1':'translate-y-0.5'}`}></span>

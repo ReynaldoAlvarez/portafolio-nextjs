@@ -7,9 +7,11 @@ import Link from 'next/link';
 import { LinkArrow } from '@/components/Icons';
 import Footer from '@/components/Footer';
 import Hireme from '@/components/Hireme';
+import TransitionEffect from '@/components/TransitionEffect';
 
 export default function Home() {
   return (<>
+  <TransitionEffect />
   <NavBar />
   <main className="flex items-center text-dark w-full min-h-screen">
   <div className='flex item-center justify-between lg:flex-col'>

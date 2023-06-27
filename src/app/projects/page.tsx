@@ -61,7 +61,7 @@ const Project = ({type, title, summary, link, github, href, img}:TFeatured)=>{
   return(
     <article className='w-full flex  items-center justify-between rounded-3xl border border-solid
      border-dark  shadow-2xl p-12 relative rounded-br-2xl xs:p-4 '>
-      <div className='absolute top-0 -right-3 -z-10 w-[102%] h-[103%]  rounded-[2rem] bg-dark rouded-br-3xl dark:bg-light md:-right-2 md:w-[101%] xs:h-[102%] xs:rounded-[1.5rem]'/>
+      <div className='absolute top-0 -right-3 -z-10 w-[102%] h-[103%]  rounded-[2rem] rouded-br-3xl dark:bg-light md:-right-2 md:w-[101%] xs:h-[102%] xs:rounded-[1.5rem]'/>
       <Link href={link} target='_blank' className='w-1/2 cursor-pointer overflow-hidden rounded-lg'>
         <Image src={img} alt={title}  className="w-full h-auto"
         priority
