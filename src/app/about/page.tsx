@@ -1,14 +1,11 @@
 'use client';
 import AnimatedText from '@/components/AnimatedText';
-import Footer from '@/components/Footer';
-import Hireme from '@/components/Hireme';
-import NavBar from '@/components/NavBar'
 import Head from 'next/head'
 import Image from 'next/image';
 import React, { useEffect, useRef } from 'react'
 import vidalImage from '../../../public/images/vidal.png'
 import { motion, useInView, useMotionValue, useSpring } from 'framer-motion';
-import Skills from '../skills/page';
+import Skills from '@/components/Skills';
 import Experience from '@/components/Experience';
 
  type Val={
@@ -43,33 +40,16 @@ const about = () => {
       <title>About Page | Vidal Alvarez</title>
       <meta name='description' content='any description'></meta>
     </Head>
-    <NavBar />
     <main className='flex w-full flex-col items-center justify-center text-dark dark:text-light'>
       <AnimatedText text="Passion Fuels Purpose!" className=' mb-16 lg:!text-7xl sm:!text-6xl xs:!text-4xl sm:mb-8'/>
       <div className='grid w-full grid-cols-8 gap-16 sm:gap-8 '>
         <div className='col-span-3 flex flex-col items-start justify-start xl:col-span-4 md:order-2 md:col-span-8'>
-          <h2 className='mb-4 text-lg font-bold uppercase text-dark/75 p-20'>
-            Biographi
-          </h2>
-          <p className=' font-medium'>
-          Hi, I&apos;m Vidal Alvarez @bunkerdev, a web developer and UI/UX designer with a passion for creating beautiful, functional, and user
-          </p>  
-<p className=' font-medium'>centered digital experiences. With 4 years of experience in the field. I am always looking for 
-new and innovative ways to bring my clients visions to life.
-</p>
-
-<p className=' my-4 font-medium'>I believe that design is about more than just making things look pretty
-</p>  
-<p className=' font-medium'>it&apos;s about solving problems and 
-creating intuitive, enjoyable experiences for users. 
-</p> 
-
-<p className=' font-medium'>Whether I&apos;m working on a website, mobile app, or 
-other digital product, I bring my commitment to design excellence and user
-</p> 
-<p className=' font-medium'>centered thinking to 
-every project I work on. I look forward to the opportunity to bring my skills and passion to your next project.
-</p>
+        <p className='opacity-60 '>Biographi</p>
+          <h1 className="text-3xl">Hello! I&apos;m Vidal Alvarez</h1>
+          <h1 className="text-3.5xl mb-5">Software Engineer</h1>
+          <p className={`italic opacity-90 mb-12 leading-1 textbase`}>I think that each application that a client requires is based on a need, this need is a contribution to the development of society, and we make it happen with software development.</p>
+          <p className={`w-10/12 opacity-75 h-[300px] overflow-x-auto`}> As a software engineer and the experience acquired in technology companies and my own projects that I develop, allowed me to develop skills in different areas. I have the ability to lead teams to develop applications based on customer needs, using architectures and development methodologies, adapting the most convenient language for the requested requirements, I have the ability to master different languages, However, my specialty is the use of JS with Typescript and all its frameworks, as well as Dart with Flutter.</p>
+          <p className={`w-10/12 opacity-75 h-[300px] overflow-x-auto`}>I have the ability to lead teams to develop applications based on customer needs, using architectures and development methodologies, adapting the most convenient language for the requested requirements, I have the ability to master different languages, However, my specialty is the use of JS with Typescript and all its frameworks, as well as Dart with Flutter.</p>
         </div>
 
         <div className='col-span-3 relative h-max bg-light p-8 dark:bg-dark dark:border-light xl:col-span-4 md:order-1 md:col-span-8'>
@@ -113,10 +93,9 @@ every project I work on. I look forward to the opportunity to bring my skills an
       </div>
       <Skills />
       <Experience />
-      <Hireme />
+
     </main>
-    
-  <Footer />
+
     </>
   )
 }

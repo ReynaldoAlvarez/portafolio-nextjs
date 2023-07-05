@@ -12,7 +12,7 @@ import TransitionEffect from '@/components/TransitionEffect';
 export default function Home() {
   return (<>
   <TransitionEffect />
-  <NavBar />
+
   <main className="flex items-center text-dark w-full min-h-screen">
   <div className='flex item-center justify-between lg:flex-col'>
   <div className=' w-1/2 md:w-full lg:justify-center lg:items-center'>
@@ -24,10 +24,10 @@ export default function Home() {
     </div>
     <div className='w-1/2 flex flex-col items-center self-center lg:w-full lg:text-center'>
       
-      <AnimatedText text={'Turning Vision Into Reality With Code And Desig'} 
+      <AnimatedText text={'Software Engineer'} 
       className={'!text-6xl !text-left xl:!text-5xl lg:!text-center lg:!text-6xl md:!text-5xl sm:!text-3xl'} />
-      <p className='my-4 text-base font-medium md:text-sm sm:text-xs'>As a skilled full-stack developer, I am dedicated to turning ideas into innovative web applications. 
-Explore my latest projects and articles, showcasing my expertise in React.js and web development.</p>
+      <p className='my-4 text-base font-medium md:text-sm sm:text-xs'>I create solutions to problems according to the needs of clients using software technologies, i am dedicated to turning ideas into innovative web and mobile applications. 
+      Explore my latest projects and articles showcasing my expertise</p>
       <div className='flex items-center self-start mt-2 lg:self-center'>
         <Link href='/dummy.pdf' target='_blank' className=' flex items-center bg-dark text-light p-2.5 px-6 rounded-lg text-lg font-semibold hover:bg-light hover:text-dark border-2 border-solid border-transparent hover:border-dark md:p-2 md:px-4 md:text-base'
         download={true}
@@ -40,7 +40,6 @@ Explore my latest projects and articles, showcasing my expertise in React.js and
    
   </main>
   <Hireme />
-  <Footer />
   </>
   )
 }

@@ -50,10 +50,15 @@ const Experience = () => {
         style={{scaleY: scrollYProgress}}
         className='absolute left-9 top-10 w-[4px] h-full bg-dark origin-top md:w-[2px] md:left-[30px] xs:left-[20px]'/>
         <ul className='w-full flex flex-col items-start justify-between ml-4 xs:ml-222'>
-          <Details position="Software Engineer" company='Geopois' companyLink='https://www.geopois.com' time='2.5 year' address='Madrid, Spain' description='Ingeniero A Cargo Del Desarrollo hasta su despliegue del Sistema de informacion Geografica De La Empresa - Div.Industria y Costruccion.' />
-          <Details position="Software Developer" company='BunkerDev' companyLink='https://www.bunkerdev.com' time='3 year year' address='Indonesia' description='Ingeniero A Cargo Del Desarrollo hasta su despliegue del Sistema de informacion Geografica De La Empresa - Div.Industria y Costruccion.' />
+        <Details position="Developer Engineer" company='BunkerDev' companyLink='https://hansa.com.bo' time='0.5 year' address='EEUU' description='Backend AND FrontEnd web application and software developer,
+designing, implementing, maintaining, and managing the BunkerDev StartUp and company&apos;s clients' />
+        
+          <Details position="Software Engineer" company='Geopois' companyLink='https://www.geopois.com' time='2.5 year' address='Madrid, Spain' description='Software Engineer in charge of carrying out the architecture of the application, developing web and mobile applications for the company&apos;s clients.' />
+          
 
-          <Details position="Geographic Information Sistem Engineer" company='Hansa' companyLink='https://hansa.com.bo' time='2.5 year' address='La Paz, Bo' description='Ingeniero A Cargo Del Desarrollo hasta su despliegue del Sistema de informacion Geografica De La Empresa - Div.Industria y Costruccion.' />
+          <Details position="Geographic Information Sistem Engineer" company='Hansa' companyLink='https://hansa.com.bo' time='2.5 year' address='La Paz, Bo' description='Engineer In Charge Of The Development Until Its Deployment Of The Geographical Information System Of The Company - Div.Industria y Construccion.' />
+          
+          
 
 
         </ul>
