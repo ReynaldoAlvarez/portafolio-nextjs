@@ -3,7 +3,7 @@ import Link from 'next/link'
 import React, { useState } from 'react'
 import Logo from './Logo'
 import { usePathname } from 'next/navigation';
-import {GithubIcon, LinkedInIcon, TwitterIcon} from './Icons';
+import {GithubIcon, LinkedInIcon, YoutubeIcon} from './Icons';
 import { motion } from 'framer-motion';
 import {useThemeSwitcher} from './hooks/useThemeSwitcher';
 
@@ -63,12 +63,12 @@ const NavBar = () => {
       </nav>
       
       <nav className='flex item-center justify-center '>
-        <motion.a href={'https://twitter.com'} target={'_blank'}
+        <motion.a href={'https://youtube.com/@bunkerdev'} target={'_blank'}
         whileHover={{y:-2}}
         whileTap={{scale: 0.5}}
         className='w-6 mr-3'
         >
-          <TwitterIcon />
+          <YoutubeIcon />
         </motion.a>
         <motion.a href={'https://github.com/ReynaldoAlvarez'} target={'_blank'}
         whileHover={{y:-2}}
@@ -97,12 +97,12 @@ const NavBar = () => {
       </nav>
       
       <nav className='flex item-center justify-center '>
-        <motion.a href={'https://twitter.com'} target={'_blank'}
+        <motion.a href={'https://youtube.com/@bunkerdev'} target={'_blank'}
         whileHover={{y:-2}}
         whileTap={{scale: 0.5}}
         className='w-6 mr-3'
         >
-          <TwitterIcon />
+          <YoutubeIcon />
         </motion.a>
         <motion.a href={'https://github.com/ReynaldoAlvarez'} target={'_blank'}
         whileHover={{y:-2}}

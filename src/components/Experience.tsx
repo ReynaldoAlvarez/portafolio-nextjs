@@ -56,7 +56,7 @@ designing, implementing, maintaining, and managing the BunkerDev StartUp and com
           <Details position="Software Engineer" company='Geopois' companyLink='https://www.geopois.com' time='2.5 year' address='Madrid, Spain' description='Software Engineer in charge of carrying out the architecture of the application, developing web and mobile applications for the company&apos;s clients.' />
           
 
-          <Details position="Geographic Information Sistem Engineer" company='Hansa' companyLink='https://hansa.com.bo' time='2.5 year' address='La Paz, Bo' description='Engineer In Charge Of The Development Until Its Deployment Of The Geographical Information System Of The Company - Div.Industria y Construccion.' />
+          <Details position="Geographic Information System Engineer" company='Hansa' companyLink='https://hansa.com.bo' time='2.5 year' address='La Paz, Bo' description='Engineer In Charge Of The Development Until Its Deployment Of The Geographical Information System Of The Company - Div.Industria y Construccion.' />
           
           
 
