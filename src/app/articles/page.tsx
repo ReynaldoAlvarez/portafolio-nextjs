@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useRef } from 'react'
 
-import coursenextjs13 from '../../../public/images/articles/Coursenextjs13.png'
+import coursenextjs13 from '../../../public/images/articles/coursenextjs13.png'
 
 import architectsoftware from '../../../public/images/articles/architectsoftware.png'
 import softwaredevelopment from '../../../public/images/articles/softwaredevelopment.png'
