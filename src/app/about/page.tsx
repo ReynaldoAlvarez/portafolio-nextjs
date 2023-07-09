@@ -52,8 +52,8 @@ const about = () => {
           <p className={`w-10/12 opacity-75 h-[300px] overflow-x-auto`}>I have the ability to lead teams to develop applications based on customer needs, using architectures and development methodologies, adapting the most convenient language for the requested requirements, I have the ability to master different languages, However, my specialty is the use of JS with Typescript and all its frameworks, as well as Dart with Flutter.</p>
         </div>
 
-        <div className='col-span-3 relative h-max bg-light p-8 dark:bg-dark dark:border-light xl:col-span-4 md:order-1 md:col-span-8'>
-          <div className="absolute top-0 -right-3 -z-10 w-[102%] h-[103%]">
+        <div className='col-span-3  h-max bg-light p-8 dark:bg-dark dark:border-light xl:col-span-4 md:order-1 md:col-span-8'>
+          <div className=" top-0 -right-3 -z-10 w-[102%] h-[103%]">
             <Image src={vidalImage} alt='vidal' className='w-full h-auto rounded-2xl' 
             priority
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"

@@ -1,3 +1,30 @@
+/* 
+import {GrProjects, GrArticle,GrHome, GrUser} from  'react-icons/Gr'
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+//  links
+const links = [
+  { name: 'home', path: '/', icon: <GrHome /> },
+  { name: 'about', path: '/about', icon: <GrUser /> },
+  { name: 'projects', path: '/projects', icon: <GrProjects /> },
+  { name: 'articles', path: '/articles', icon: <GrArticle /> },
+];
+
+const Nav = () => {
+  const pathname = usePathname();
+  console.log(pathname)
+  return <nav className='flex flex-col items-center xl:justify-center  fixed h-max bottom-0 mt-auto  xl:right-[2%] z-50 top-0 w-full xl:w-16 xl:max-w-md xl:h-screen'>
+    <div className='flex w-full lg:flex-col items-center justify-between lg:justify-center gap-y-10 px-4 md:px-40 lg:px-0 h-[80px] lg:h-max py-8 
+bg-white/10
+ text-3xl lg:text-xl lg:rounded-full' >
+      {links.map((link, i) =>{
+        return  <Link className={`${link.path === pathname && 'bg-primary'}`} href={link.path} key={i}>{link.icon}</Link>
+      })}
+    </div>
+  </nav>;
+};
+
+export default Nav; */
 
 import Link from 'next/link'
 import React, { useState } from 'react'
@@ -125,4 +152,4 @@ const NavBar = () => {
   )
 }
 
-export default NavBar
+export default NavBar 
