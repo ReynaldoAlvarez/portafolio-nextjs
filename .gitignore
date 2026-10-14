@@ -52,3 +52,20 @@ prompt
 server.log
 # Skills directory
 /skills/
+
+# Z.ai scripts and internal config
+/.zscripts/
+/.z-ai-config/
+/.claude/
+/upload/
+/worklog.md
+
+# Prisma database folder
+/db/
+
+# Mini services and examples
+/mini-services/
+/examples/
+
+# Download folder (screenshots, exports)
+/download/
