@@ -58,7 +58,8 @@ export function Hero() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="text-xl sm:text-2xl font-semibold text-muted-foreground mb-6"
             >
-              Software Engineer
+              Software Engineer <span className="text-primary/70">·</span>{' '}
+              <span className="text-primary">12+ años de experiencia</span>
             </motion.p>
 
             <motion.p
@@ -67,8 +68,9 @@ export function Hero() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="text-base text-muted-foreground mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed"
             >
-              {profile.tagline} Especializado en construir plataformas educativas
-              con IA, sistemas escalables y aplicaciones web/móvil de alto impacto.
+              Ingeniero de Sistemas (EMI 2012) especializado en arquitecturas escalables,
+              microservicios y SaaS educativo con IA. Construyo plataformas web, móviles
+              y sistemas distribuidos con impacto real en sector público y educativo.
             </motion.p>
 
             <motion.div

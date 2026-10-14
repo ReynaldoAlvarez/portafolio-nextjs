@@ -2,7 +2,10 @@
  * Portafolio Data - Vidal Reynaldo Alvarez Challco
  * Software Engineer
  *
- * Datos verificados desde GitHub (github.com/ReynaldoAlvarez)
+ * Datos verificados desde GitHub y LinkedIn
+ * - Graduado 2012: Escuela Militar de Ingeniería "Mcal. Antonio José de Sucre"
+ * - Licenciado en Ingeniería de Sistemas (carrera 2007 - 2012)
+ * - Experiencia profesional en software desde 2015
  * Última actualización: Octubre 2026
  */
 
@@ -10,18 +13,18 @@ export const profile = {
   name: "Vidal Reynaldo Alvarez Challco",
   shortName: "Vidal Alvarez",
   role: "Software Engineer",
-  tagline: "Ingeniero de Software especializado en arquitecturas escalables, SaaS educativo con IA y desarrollo fullstack.",
+  tagline: "Ingeniero de Sistemas con más de 12 años de experiencia construyendo arquitecturas de software escalables, SaaS educativo con IA y plataformas web/móvil de alto impacto.",
   location: "La Paz, Bolivia",
   email: "vidal.r.a.777@gmail.com",
   resumeUrl: "/resumen-vidal-alvarez-2023.pdf",
   bio: [
-    "Soy Software Engineer con más de 6 años de experiencia construyendo aplicaciones web, móviles y plataformas SaaS. Mi especialidad es el diseño de arquitecturas limpias y escalables utilizando TypeScript, Node.js, Next.js y Flutter.",
-    "He liderado el desarrollo de plataformas educativas con integración de inteligencia artificial, sistemas geoespaciales empresariales y aplicaciones móviles de alta concurrencia. Actualmente enfoco mi trabajo en soluciones tecnológicas para el sector educativo público, combinando buenas prácticas de ingeniería con impacto social.",
-    "Trabajo con metodologías ágiles (Scrum/Kanban), principios SOLID, arquitectura hexagonal y DevOps. Disfruto resolver problemas complejos y construir productos que generen valor real para las personas.",
+    "Soy Ingeniero de Sistemas graduado de la Escuela Militar de Ingeniería \u201CMcal. Antonio José de Sucre\u201D (2007 — 2012), con más de 12 años de experiencia profesional desarrollando software en diferentes compañías de Bolivia, España y Estados Unidos. Mi especialidad es el diseño de arquitecturas limpias y escalables utilizando TypeScript, Node.js, Angular, Next.js y Flutter.",
+    "He liderado el desarrollo de plataformas educativas con integración de inteligencia artificial, sistemas geoespaciales empresariales y aplicaciones móviles de alta concurrencia. Mi trayectoria incluye trabajo en sector público, geoespacial, logístico y educativo, combinando buenas prácticas de ingeniería con metodologías ágiles (Scrum/Kanban), principios SOLID y arquitectura de microservicios.",
+    "Actualmente enfoco mi trabajo en soluciones tecnológicas para el sector educativo público, con énfasis en arquitecturas multi-tenant, microservicios y DevOps. Disfruto resolver problemas complejos y construir productos que generen valor social real, liderando equipos técnicos distribuidos y estableciendo estándares de calidad de ingeniería.",
   ],
   stats: [
-    { label: "Años de experiencia", value: 6, suffix: "+" },
-    { label: "Proyectos completados", value: 40, suffix: "+" },
+    { label: "Años de experiencia", value: 12, suffix: "+" },
+    { label: "Proyectos completados", value: 50, suffix: "+" },
     { label: "Clientes satisfechos", value: 25, suffix: "+" },
     { label: "Repositorios activos", value: 25, suffix: "" },
   ],
@@ -303,12 +306,12 @@ export const skillCategories: SkillCategory[] = [
     title: "Frontend Web",
     icon: "layout",
     skills: [
+      { name: "Angular", level: "Avanzado" },
       { name: "Next.js 16", level: "Experto" },
       { name: "React 19", level: "Experto" },
       { name: "Tailwind CSS 4", level: "Experto" },
       { name: "shadcn/ui", level: "Avanzado" },
-      { name: "Framer Motion", level: "Avanzado" },
-      { name: "Redux Toolkit", level: "Avanzado" },
+      { name: "RxJS / Redux Toolkit", level: "Avanzado" },
     ],
   },
   {
@@ -362,13 +365,14 @@ export const experiences: Experience[] = [
     company: "BunkerDev",
     companyLink: "https://hansa.com.bo",
     period: "2023 — Presente",
-    location: "Remoto / EEUU",
+    location: "Remoto / Estados Unidos",
     description:
-      "Liderazgo técnico en el desarrollo de aplicaciones web y móviles para clientes de BunkerDev. Diseño de arquitecturas, implementación y mantenimiento del stack completo.",
+      "Liderazgo técnico en el desarrollo de aplicaciones web y móviles para clientes de BunkerDev. Diseño de arquitecturas, implementación y mantenimiento del stack completo con enfoque en SaaS educativo con IA.",
     achievements: [
-      "Diseño y desarrollo de API SaaS educativa con IA (Luminia)",
-      "Implementación de Clean Architecture en backends empresariales",
-      "Despliegue y mantenimiento de plataformas en producción",
+      "Diseño y desarrollo de Luminia, API SaaS educativa con IA (multi-tenant)",
+      "Implementación de arquitectura de microservicios y Clean Architecture",
+      "Despliegue y mantenimiento de plataformas en producción con Docker y CI/CD",
+      "Mentoría técnica y estándares de code review en el equipo",
     ],
   },
   {
@@ -378,25 +382,25 @@ export const experiences: Experience[] = [
     period: "2020 — 2023",
     location: "Madrid, España",
     description:
-      "Ingeniero de Software encargado de la arquitectura de la aplicación, desarrollo web y móvil para clientes de la compañía especializada en información geográfica.",
+      "Ingeniero de Software encargado de la arquitectura de la aplicación, desarrollo web y móvil para clientes de la compañía especializada en información geográfica y SIG.",
     achievements: [
-      "Arquitectura de plataforma geoespacial con PostGIS",
-      "Desarrollo de visores web mapping interactivos",
-      "Integración con Google Maps y OpenStreetMap APIs",
+      "Arquitectura de plataforma geoespacial (geopois.com) con PostgreSQL/PostGIS",
+      "Desarrollo de visores web mapping interactivos y microservicios",
+      "Integración con Google Maps API y OpenStreetMap",
     ],
   },
   {
-    position: "Geographic Information System Engineer",
-    company: "Hansa",
+    position: "Software Engineer / GIS Engineer",
+    company: "Hansa Ltda.",
     companyLink: "https://hansa.com.bo",
-    period: "2018 — 2020",
+    period: "2015 — 2020",
     location: "La Paz, Bolivia",
     description:
-      "Ingeniero encargado del desarrollo hasta el despliegue del Sistema de Información Geográfica de la empresa, división Industria y Construcción.",
+      "Ingeniero a cargo del diseño, desarrollo y despliegue del Sistema de Información Geográfica de la empresa (Div. Industria y Construcción), con trabajo en PHP, JavaScript, MySQL y Google Cloud.",
     achievements: [
-      "Implementación de SIG para división industrial",
-      "Despliegue de visores cartográficos empresariales",
-      "Integración con sistemas de geomarketing",
+      "Diseño e implementación del SIG empresarial de principio a fin",
+      "Desarrollo de módulos CRM basados en geofences y geomarketing",
+      "Despliegue de visores cartográficos en Google Cloud",
     ],
   },
 ]

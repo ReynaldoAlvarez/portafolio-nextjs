@@ -72,41 +72,41 @@ contact_style = ParagraphStyle(
 
 section_title_style = ParagraphStyle(
     'CVSectionTitle', fontName=HEADING_FONT, fontSize=11,
-    leading=14, spaceBefore=8, spaceAfter=1,
+    leading=14, spaceBefore=6, spaceAfter=1,
     textColor=ACCENT, alignment=TA_LEFT
 )
 
 job_title_style = ParagraphStyle(
     'CVJobTitle', fontName=BODY_FONT_BOLD, fontSize=10,
-    leading=12.5, spaceAfter=0.5, textColor=TEXT_PRIMARY
+    leading=12, spaceAfter=0.5, textColor=TEXT_PRIMARY
 )
 
 job_meta_style = ParagraphStyle(
     'CVJobMeta', fontName=BODY_FONT_ITALIC, fontSize=9,
-    leading=11.5, textColor=TEXT_LIGHT, spaceAfter=2
+    leading=11, textColor=TEXT_LIGHT, spaceAfter=2
 )
 
 bullet_style = ParagraphStyle(
     'CVBullet', fontName=BODY_FONT, fontSize=9.5,
-    leading=12.5, leftIndent=12, bulletIndent=2,
+    leading=12, leftIndent=12, bulletIndent=2,
     spaceBefore=0.5, spaceAfter=0.5, textColor=TEXT_PRIMARY,
     alignment=TA_JUSTIFY
 )
 
 body_style = ParagraphStyle(
     'CVBody', fontName=BODY_FONT, fontSize=9.5,
-    leading=13, spaceAfter=2, textColor=TEXT_PRIMARY,
+    leading=12.5, spaceAfter=2, textColor=TEXT_PRIMARY,
     alignment=TA_JUSTIFY
 )
 
 skill_cat_style = ParagraphStyle(
     'CVSkillCat', fontName=BODY_FONT_BOLD, fontSize=9.5,
-    leading=12, textColor=ACCENT, spaceAfter=0
+    leading=11.5, textColor=ACCENT, spaceAfter=0
 )
 
 skill_val_style = ParagraphStyle(
     'CVSkillVal', fontName=BODY_FONT, fontSize=9.5,
-    leading=12, textColor=TEXT_PRIMARY, spaceAfter=2,
+    leading=11.5, textColor=TEXT_PRIMARY, spaceAfter=2,
     leftIndent=8
 )
 
@@ -206,13 +206,14 @@ story.append(Paragraph(
 # ═══════════════════════════════════════════════════════════════
 story.extend(section_header('Resumen Profesional'))
 story.append(Paragraph(
-    'Software Engineer con más de 6 años de experiencia diseñando y construyendo plataformas '
-    'web, móviles y SaaS de alto impacto. Especializado en arquitectura de microservicios, '
-    'sistemas distribuidos y aplicaciones educativas con integración de inteligencia artificial. '
-    'Liderazgo técnico en proyectos desde la concepción arquitectónica hasta el despliegue en '
-    'producción, con experiencia en sector público, geoespacial y educativo. Comprometido con '
-    'las buenas prácticas de ingeniería, metodologías ágiles y la creación de soluciones '
-    'tecnológicas que generen valor social.',
+    'Software Engineer con más de 12 años de experiencia profesional desarrollando software '
+    'para compañías en Bolivia, España y Estados Unidos. Ingeniero de Sistemas graduado de la '
+    'Escuela Militar de Ingeniería "Mcal. Antonio José de Sucre" (EMI, La Paz — 2012). '
+    'Especializado en arquitectura de microservicios, sistemas distribuidos y aplicaciones '
+    'educativas con integración de inteligencia artificial. Liderazgo técnico en proyectos desde '
+    'la concepción arquitectónica hasta el despliegue en producción, con experiencia en sector '
+    'público, geoespacial, logístico y educativo. Comprometido con las buenas prácticas de '
+    'ingeniería, metodologías ágiles y la creación de soluciones tecnológicas que generen valor social.',
     body_style
 ))
 
@@ -248,14 +249,14 @@ story.extend(experience_entry(
 ))
 
 story.extend(experience_entry(
-    'Geographic Information System Engineer',
-    'Hansa — Div. Industria y Construcción',
-    'Ene 2018 — Dic 2019',
+    'Software Engineer / GIS Engineer',
+    'Hansa Ltda. — Div. Industria y Construcción',
+    'Ene 2015 — Dic 2019',
     'La Paz, Bolivia',
     [
         'Diseño, desarrollo y despliegue del Sistema de Información Geográfica empresarial, desde la arquitectura inicial hasta la puesta en producción.',
-        'Implementación de visores cartográficos con integración a Google Cloud y sistemas de geomarketing con geofences y puntos de fluctuación.',
-        'Desarrollo de módulos CRM basados en tecnología geoespacial para monitoreo de clientes mediante cercas geográficas.',
+        'Implementación de visores cartográficos con Google Cloud y sistemas de geomarketing con geofences y puntos de fluctuación.',
+        'Desarrollo de módulos CRM geoespaciales para monitoreo de clientes mediante cercas geográficas, con PHP, JavaScript, MySQL y Google Cloud.',
     ]
 ))
 
@@ -327,11 +328,11 @@ story.extend(skills_two_column([
 story.extend(section_header('Educación'))
 
 story.extend(education_entry(
-    'Ingeniería de Sistemas',
-    'Universidad Mayor de San Andrés (UMSA)',
-    'La Paz, Bolivia',
+    'Licenciatura en Ingeniería de Sistemas',
+    'Escuela Militar de Ingeniería "Mcal. Antonio José de Sucre" (EMI)',
+    '2007 — 2012  |  La Paz, Bolivia',
     'Formación en ingeniería de sistemas con enfoque en arquitectura de software, '
-    'bases de datos y sistemas distribuidos.'
+    'bases de datos, sistemas distribuidos e ingeniería geoespacial.'
 ))
 
 # ═══════════════════════════════════════════════════════════════
@@ -385,6 +386,11 @@ story.append(Spacer(1, 4))
 # ═══════════════════════════════════════════════════════════════
 story.extend(section_header('Logros Clave y Métricas'))
 
+story.append(Paragraph(
+    '\u2022 <b>12+ años de experiencia profesional</b> en desarrollo de software para '
+    'compañías en Bolivia, España y Estados Unidos, desde 2015.',
+    bullet_style
+))
 story.append(Paragraph(
     '\u2022 <b>25+ repositorios activos</b> en GitHub con proyectos en producción, '
     'cubriendo arquitecturas SaaS, microservicios, aplicaciones móviles y plataformas geoespaciales.',

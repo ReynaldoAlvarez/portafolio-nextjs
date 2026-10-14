@@ -36,8 +36,8 @@ export function Experience() {
             Experiencia <span className="gradient-text">profesional</span>
           </h2>
           <p className="mt-4 text-base text-muted-foreground max-w-2xl mx-auto">
-            Más de 6 años construyendo software para empresas en Bolivia,
-            España y Estados Unidos.
+            Más de 12 años construyendo software para empresas en Bolivia,
+            España y Estados Unidos. Trayectoria desde 2015 en ingeniería de software.
           </p>
         </motion.div>
 
