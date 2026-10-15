@@ -47,7 +47,7 @@ const tags = [
 
 export function About() {
   return (
-    <section id="sobre-mi" className="section-anchor py-20 lg:py-28">
+    <section id="sobre-mi" className="section-anchor py-20 lg:py-28 relative overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section header with gradient line */}
         <motion.div
@@ -62,9 +62,9 @@ export function About() {
             whileInView={{ scale: 1, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ type: 'spring', stiffness: 200, damping: 20 }}
-            className="inline-block text-sm font-semibold uppercase tracking-widest text-primary bg-primary/10 px-3 py-1 rounded-full mb-4"
+            className="inline-block text-sm font-semibold uppercase tracking-widest text-primary bg-primary/10 px-3 py-1 rounded-full mb-4 font-mono"
           >
-            Sobre mí
+            {'// sobre_mi'}
           </motion.span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">
             Pasión por construir software con{' '}

@@ -29,12 +29,19 @@ export function Experience() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <span className="text-sm font-semibold uppercase tracking-widest text-primary">
-            Trayectoria
+          <span className="text-sm font-semibold uppercase tracking-widest text-primary bg-primary/10 px-3 py-1 rounded-full font-mono">
+            {'// trayectoria'}
           </span>
           <h2 className="mt-2 text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">
             Experiencia <span className="gradient-text">profesional</span>
           </h2>
+          <motion.div
+            initial={{ width: 0 }}
+            whileInView={{ width: '60px' }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="h-1 bg-gradient-to-r from-primary to-accent mx-auto mt-4 rounded-full"
+          />
           <p className="mt-4 text-base text-muted-foreground max-w-2xl mx-auto">
             Más de 12 años construyendo software para empresas en Bolivia,
             España y Estados Unidos. Trayectoria desde 2015 en ingeniería de software.

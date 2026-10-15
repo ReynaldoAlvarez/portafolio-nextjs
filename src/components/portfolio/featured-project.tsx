@@ -32,9 +32,9 @@ export function FeaturedProject() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <Badge variant="secondary" className="gap-1.5 mb-4">
+          <Badge variant="secondary" className="gap-1.5 mb-4 font-mono">
             <Sparkles className="h-3 w-3" />
-            Proyecto Destacado
+            {'// proyecto_destacado'}
           </Badge>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">
             SaaS Educativo con{' '}

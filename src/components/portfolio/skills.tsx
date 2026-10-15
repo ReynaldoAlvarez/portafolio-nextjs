@@ -48,9 +48,9 @@ export function Skills() {
             whileInView={{ scale: 1, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ type: 'spring', stiffness: 200, damping: 20 }}
-            className="inline-block text-sm font-semibold uppercase tracking-widest text-primary bg-primary/10 px-3 py-1 rounded-full mb-4"
+            className="inline-block text-sm font-semibold uppercase tracking-widest text-primary bg-primary/10 px-3 py-1 rounded-full mb-4 font-mono"
           >
-            Stack Tecnológico
+            {'// stack_tecnologico'}
           </motion.span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">
             Competencias <span className="gradient-text">técnicas</span>

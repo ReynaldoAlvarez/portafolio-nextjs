@@ -44,15 +44,8 @@ export function Hero() {
       id="inicio"
       className="section-anchor relative min-h-screen flex items-center justify-center pt-20 pb-12 overflow-hidden"
     >
-      {/* Background effects - layered and animated */}
-      <motion.div
-        animate={{
-          backgroundPosition: ['0px 0px', '50px 50px'],
-        }}
-        transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-        className="absolute inset-0 dot-pattern opacity-30 -z-10"
-      />
-      <div className="absolute inset-0 -z-20 bg-gradient-to-br from-primary/5 via-transparent to-accent/10" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary/5 via-transparent to-accent/10" />
+      {/* Animated gradient blobs */}
       <motion.div
         animate={{
           scale: [1, 1.2, 1],
@@ -80,6 +73,7 @@ export function Hero() {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left: Text content */}
           <div className="text-center lg:text-left">
+            {/* Terminal-style badge with retro vibe */}
             <motion.div variants={itemVariants} className="inline-flex items-center gap-2 mb-6">
               <motion.span
                 animate={{ scale: [1, 1.2, 1] }}
@@ -87,9 +81,23 @@ export function Hero() {
               >
                 <Sparkles className="h-3 w-3 text-primary" />
               </motion.span>
-              <Badge variant="secondary" className="gap-1.5 py-1.5 px-3">
-                Disponible para nuevos proyectos
+              <Badge variant="secondary" className="gap-1.5 py-1.5 px-3 font-mono text-xs tracking-wider">
+                <span className="inline-block h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+                available_for_hire
               </Badge>
+            </motion.div>
+
+            {/* Terminal prompt style */}
+            <motion.div
+              variants={itemVariants}
+              className="font-mono text-sm text-muted-foreground mb-3 lg:text-left"
+            >
+              <span className="text-primary">vidal@portfolio</span>
+              <span className="mx-1">:</span>
+              <span className="text-accent-foreground/80">~</span>
+              <span className="mx-1">$</span>
+              <span className="text-foreground">whoami</span>
+              <span className="blink-cursor" />
             </motion.div>
 
             <motion.h1
@@ -97,16 +105,9 @@ export function Hero() {
               className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-4"
             >
               Hola, soy{' '}
-              <span className="gradient-text inline-block">
+              <span className="gradient-text inline-block glitch-hover cursor-default">
                 Vidal Alvarez
               </span>
-              <motion.span
-                animate={{ rotate: [0, 20, 0, -20, 0] }}
-                transition={{ duration: 2, repeat: Infinity, repeatDelay: 1 }}
-                className="inline-block ml-2"
-              >
-                👋
-              </motion.span>
             </motion.h1>
 
             <motion.p
@@ -115,7 +116,7 @@ export function Hero() {
             >
               Software Engineer{' '}
               <span className="text-primary/70">·</span>{' '}
-              <span className="text-primary">12+ años de experiencia</span>
+              <span className="text-primary font-mono">{'<'}12+ yrs{'/>'}</span>
             </motion.p>
 
             <motion.p
@@ -136,10 +137,10 @@ export function Hero() {
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: 'spring', stiffness: 400, damping: 17 }}
               >
-                <Button asChild size="lg" className="gap-2 shadow-lg">
+                <Button asChild size="lg" className="gap-2 shadow-lg font-mono">
                   <a href={profile.resumeUrl} target="_blank" rel="noopener noreferrer">
                     <Download className="h-4 w-4" />
-                    Descargar CV
+                    ./download_cv
                   </a>
                 </Button>
               </motion.div>
@@ -148,10 +149,10 @@ export function Hero() {
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: 'spring', stiffness: 400, damping: 17 }}
               >
-                <Button asChild variant="outline" size="lg" className="gap-2">
+                <Button asChild variant="outline" size="lg" className="gap-2 font-mono">
                   <a href="#contacto">
                     <Mail className="h-4 w-4" />
-                    Contactar
+                    ./contact
                   </a>
                 </Button>
               </motion.div>
@@ -159,14 +160,17 @@ export function Hero() {
 
             <motion.div
               variants={itemVariants}
-              className="flex items-center justify-center lg:justify-start gap-2 text-sm text-muted-foreground"
+              className="flex items-center justify-center lg:justify-start gap-2 text-sm text-muted-foreground font-mono"
             >
               <MapPin className="h-4 w-4" />
-              {profile.location}
+              <span>{profile.location}</span>
+              <span className="mx-1 text-primary">|</span>
+              <span className="text-emerald-500">●</span>
+              <span>online</span>
             </motion.div>
           </div>
 
-          {/* Right: Profile image with animated rings */}
+          {/* Right: Profile image with animated rings and code aesthetic */}
           <motion.div
             variants={itemVariants}
             className="relative hidden lg:flex items-center justify-center"
@@ -247,7 +251,7 @@ export function Hero() {
                       }}
                       className="-translate-x-1/2 -translate-y-1/2"
                     >
-                      <div className="px-3 py-1.5 rounded-lg bg-card shadow-xl border border-primary/40 text-xs font-semibold whitespace-nowrap">
+                      <div className="px-3 py-1.5 rounded-lg bg-card shadow-xl border border-primary/40 text-xs font-semibold whitespace-nowrap font-mono">
                         {item.label}
                       </div>
                     </motion.div>
@@ -268,7 +272,7 @@ export function Hero() {
             transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
             className="flex flex-col items-center gap-1 text-muted-foreground"
           >
-            <span className="text-xs uppercase tracking-widest">Scroll</span>
+            <span className="text-xs uppercase tracking-widest font-mono">scroll</span>
             <ArrowDown className="h-4 w-4" />
           </motion.div>
         </motion.div>

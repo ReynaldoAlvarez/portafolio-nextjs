@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
+  <defs>
+    <pattern id="codePattern" x="0" y="0" width="600" height="600" patternUnits="userSpaceOnUse">
+      <!-- Code snippets scattered as background texture - emerald green for both themes -->
+      <g font-family="'JetBrains Mono', 'Fira Code', 'Courier New', monospace" font-size="11" fill="#10b981" opacity="0.15">
+        <text x="20" y="40">const luminia = await api</text>
+        <text x="20" y="58">  .edu()</text>
+        <text x="20" y="76">  .saas()</text>
+        <text x="20" y="94">  .tenant(id)</text>
+        <text x="20" y="112">  .build();</text>
+
+        <text x="20" y="160">import { PrismaClient }</text>
+        <text x="20" y="178">  from '@prisma/client';</text>
+        <text x="20" y="196">const db = new PrismaClient();</text>
+
+        <text x="20" y="250">async function handler() {</text>
+        <text x="20" y="268">  const user = await db.user</text>
+        <text x="20" y="286">    .findUnique({ where: id });</text>
+        <text x="20" y="304">  return Response.json(user);</text>
+        <text x="20" y="322">}</text>
+
+        <text x="20" y="380">@Controller('api/v1')</text>
+        <text x="20" y="398">export class AppController {</text>
+        <text x="20" y="416">  @Get('health')</text>
+        <text x="20" y="434">  health() { return { ok: true }; }</text>
+        <text x="20" y="452">}</text>
+
+        <text x="20" y="510">const schema = z.object({</text>
+        <text x="20" y="528">  email: z.string().email(),</text>
+        <text x="20" y="546">  password: z.string().min(8),</text>
+        <text x="20" y="564">});</text>
+
+        <text x="280" y="40">export function Hero() {</text>
+        <text x="280" y="58">  return (</text>
+        <text x="280" y="76">    &lt;section id="inicio"&gt;</text>
+        <text x="280" y="94">      &lt;motion.div /&gt;</text>
+        <text x="280" y="112">    &lt;/section&gt;</text>
+        <text x="280" y="130">  );</text>
+        <text x="280" y="148">}</text>
+
+        <text x="280" y="200">// Microservices architecture</text>
+        <text x="280" y="218">gateway: {</text>
+        <text x="280" y="236">  '/api/auth'   -&gt; auth-svc</text>
+        <text x="280" y="254">  '/api/users'  -&gt; user-svc</text>
+        <text x="280" y="272">  '/api/edu'     -&gt; edu-svc</text>
+        <text x="280" y="290">}</text>
+
+        <text x="280" y="340">docker compose up -d</text>
+        <text x="280" y="358">$ vercel --prod</text>
+        <text x="280" y="376">$ git push origin main</text>
+
+        <text x="280" y="430">const worker = new Worker(</text>
+        <text x="280" y="448">  'queue',</text>
+        <text x="280" y="466">  async (job) =&gt; {</text>
+        <text x="280" y="484">    await process(job.data);</text>
+        <text x="280" y="502">  }</text>
+        <text x="280" y="520">);</text>
+
+        <text x="280" y="560">CREATE TABLE users (</text>
+      </g>
+      <!-- Symbols and brackets for decoration - amber for contrast -->
+      <g font-family="'JetBrains Mono', monospace" font-size="14" fill="#f59e0b" opacity="0.18">
+        <text x="540" y="40">{ }</text>
+        <text x="540" y="160">&lt;/&gt;</text>
+        <text x="540" y="280">=&gt;</text>
+        <text x="540" y="400">()</text>
+        <text x="540" y="520">[]</text>
+      </g>
+    </pattern>
+  </defs>
+  <rect width="600" height="600" fill="url(#codePattern)"/>
+</svg>

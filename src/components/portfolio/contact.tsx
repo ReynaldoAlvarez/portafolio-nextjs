@@ -79,9 +79,9 @@ export function Contact() {
             whileInView={{ scale: 1, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ type: 'spring', stiffness: 200, damping: 20 }}
-            className="inline-block text-sm font-semibold uppercase tracking-widest text-primary bg-primary/10 px-3 py-1 rounded-full mb-4"
+            className="inline-block text-sm font-semibold uppercase tracking-widest text-primary bg-primary/10 px-3 py-1 rounded-full mb-4 font-mono"
           >
-            Contacto
+            {'// contacto'}
           </motion.span>
           <h2 className="mt-2 text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">
             Construyamos algo{' '}

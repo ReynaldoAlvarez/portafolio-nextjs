@@ -6,8 +6,10 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Retro-modern fonts: Space Grotesk for display, JetBrains Mono for code/mono */
+  --font-sans: var(--font-space-grotesk), var(--font-geist-sans), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), var(--font-geist-mono), 'Courier New', monospace;
+  --font-display: var(--font-space-grotesk), system-ui, sans-serif;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -121,10 +123,20 @@
   }
   body {
     @apply bg-background text-foreground antialiased;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    font-feature-settings: "rlig" 1, "calt" 1, "ss01" 1;
+    font-family: var(--font-sans);
   }
   html {
     scroll-behavior: smooth;
+  }
+  /* Headings use display font with tighter tracking */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+  /* Monospace for code-like elements */
+  code, pre, .mono {
+    font-family: var(--font-mono);
   }
 }
 
@@ -173,6 +185,28 @@
   background-size: 24px 24px;
 }
 
+/* Code pattern background using SVG - the hero/code aesthetic */
+.code-pattern {
+  background-image: url('/code-pattern.svg');
+  background-size: 600px 600px;
+  background-repeat: repeat;
+  background-position: 0 0;
+  color: var(--foreground);
+}
+
+/* Animated code pattern - subtle drift */
+@keyframes code-drift {
+  0% { background-position: 0px 0px; }
+  100% { background-position: 600px 600px; }
+}
+.code-pattern-animated {
+  background-image: url('/code-pattern.svg');
+  background-size: 600px 600px;
+  background-repeat: repeat;
+  color: var(--foreground);
+  animation: code-drift 60s linear infinite;
+}
+
 /* Glassmorphism */
 .glass {
   background: color-mix(in oklch, var(--card) 70%, transparent);
@@ -194,4 +228,52 @@
 .animated-gradient-border {
   background-size: 200% 200%;
   animation: gradient-shift 6s ease infinite;
+}
+
+/* Retro terminal text effect for labels/badges */
+.retro-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* Glitch effect for hero name (subtle) */
+@keyframes glitch {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(-1px, 1px); }
+  40% { transform: translate(-1px, -1px); }
+  60% { transform: translate(1px, 1px); }
+  80% { transform: translate(1px, -1px); }
+}
+.glitch-hover:hover {
+  animation: glitch 0.3s ease-in-out;
+}
+
+/* Blinking cursor for terminal vibe */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+.blink-cursor::after {
+  content: '_';
+  animation: blink 1s step-end infinite;
+  color: var(--primary);
+  margin-left: 2px;
+}
+
+/* Section heading underline animation */
+.heading-underline {
+  position: relative;
+}
+.heading-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--chart-2));
+  border-radius: 2px;
 }
