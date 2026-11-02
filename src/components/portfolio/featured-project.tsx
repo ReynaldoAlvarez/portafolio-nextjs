@@ -81,9 +81,12 @@ export function FeaturedProject() {
                 ))}
               </ul>
 
-              <div className="mt-9 flex flex-wrap gap-3">
+              <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 {project.link && (
-                  <Button asChild className="rounded-full">
+                  <Button
+                    asChild
+                    className="w-full rounded-full sm:w-auto"
+                  >
                     <a
                       href={project.link}
                       target="_blank"
@@ -98,7 +101,7 @@ export function FeaturedProject() {
                   <Button
                     asChild
                     variant="outline"
-                    className="rounded-full"
+                    className="w-full rounded-full sm:w-auto"
                   >
                     <a
                       href={project.github}

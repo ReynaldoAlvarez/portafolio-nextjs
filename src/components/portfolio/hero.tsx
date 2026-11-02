@@ -82,7 +82,7 @@ export function Hero() {
             {/* Value proposition */}
             <motion.p
               variants={itemVariants}
-              className="mt-6 max-w-[34rem] text-lg leading-relaxed text-foreground/80 sm:text-xl"
+              className="mt-6 max-w-[34rem] text-base leading-relaxed text-foreground/80 sm:text-xl"
             >
               Software engineer con 12 años construyendo{' '}
               <em className="font-display italic">SaaS educativo con IA</em>,
@@ -93,9 +93,13 @@ export function Hero() {
             {/* CTAs — one primary, one quiet */}
             <motion.div
               variants={itemVariants}
-              className="mt-9 flex flex-wrap items-center gap-3"
+              className="mt-9 flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center"
             >
-              <Button asChild size="lg" className="h-11 rounded-full px-6">
+              <Button
+                asChild
+                size="lg"
+                className="h-11 w-full rounded-full px-6 sm:w-auto"
+              >
                 <a href="#proyectos">
                   Ver proyectos
                   <ArrowDown className="h-4 w-4" />
@@ -105,7 +109,7 @@ export function Hero() {
                 asChild
                 variant="ghost"
                 size="lg"
-                className="h-11 rounded-full px-6 text-muted-foreground hover:text-foreground"
+                className="h-11 w-full rounded-full px-6 text-muted-foreground hover:text-foreground sm:w-auto"
               >
                 <a
                   href={profile.resumeUrl}

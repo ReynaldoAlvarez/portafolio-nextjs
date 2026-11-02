@@ -140,7 +140,7 @@ export function Header() {
               size="icon"
               onClick={() => setTheme(isDark ? 'light' : 'dark')}
               aria-label="Cambiar tema"
-              className="h-9 w-9 rounded-full"
+              className="h-10 w-10 rounded-full sm:h-9 sm:w-9"
               suppressHydrationWarning
             >
               <AnimatePresence mode="wait" initial={false}>
@@ -171,7 +171,7 @@ export function Header() {
             <Button
               variant="ghost"
               size="icon"
-              className="h-9 w-9 rounded-full lg:hidden"
+              className="h-10 w-10 rounded-full lg:hidden sm:h-9 sm:w-9"
               onClick={() => setIsOpen(!isOpen)}
               aria-label="Menú"
               aria-expanded={isOpen}
