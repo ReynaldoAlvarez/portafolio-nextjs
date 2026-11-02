@@ -1,163 +1,72 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import {
-  Server,
-  Database,
-  Layout,
-  Smartphone,
-  Cloud,
-  ShieldCheck,
-  type LucideIcon,
-} from 'lucide-react'
-import { Card } from '@/components/ui/card'
 import { skillCategories } from '@/lib/portfolio-data'
-
-const iconMap: Record<string, LucideIcon> = {
-  server: Server,
-  database: Database,
-  layout: Layout,
-  smartphone: Smartphone,
-  cloud: Cloud,
-  shield: ShieldCheck,
-}
-
-const levelColors: Record<string, string> = {
-  Experto: 'bg-primary text-primary-foreground',
-  Avanzado: 'bg-accent text-accent-foreground',
-  Intermedio: 'bg-muted text-muted-foreground',
-}
+import { SectionHeading } from './section-heading'
+import { cn } from '@/lib/utils'
 
 export function Skills() {
   return (
     <section
       id="skills"
-      className="section-anchor py-20 lg:py-28 bg-gradient-to-b from-transparent via-primary/5 to-transparent"
+      className="section-anchor scroll-mt-24 py-20 lg:py-28"
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Section header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-12"
-        >
-          <motion.span
-            initial={{ scale: 0.8, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ type: 'spring', stiffness: 200, damping: 20 }}
-            className="inline-block text-sm font-semibold uppercase tracking-widest text-primary bg-primary/10 px-3 py-1 rounded-full mb-4 font-mono"
-          >
-            {'// stack_tecnologico'}
-          </motion.span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">
-            Competencias <span className="gradient-text">técnicas</span>
-          </h2>
-          <motion.div
-            initial={{ width: 0 }}
-            whileInView={{ width: '60px' }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="h-1 bg-gradient-to-r from-primary to-accent mx-auto mt-4 rounded-full"
-          />
-          <p className="mt-4 text-base text-muted-foreground max-w-2xl mx-auto">
-            Tecnologías que domino para construir productos de principio a fin,
-            desde la arquitectura hasta el despliegue.
-          </p>
-        </motion.div>
+      <div className="container-portfolio">
+        <SectionHeading
+          index="04"
+          eyebrow="Stack"
+          title={
+            <>
+              Competencias <em className="font-light italic">técnicas</em>
+            </>
+          }
+          description="Tecnologías para construir productos de principio a fin: de la arquitectura al despliegue. En negrita, nivel experto."
+          className="mb-10 lg:mb-14"
+        />
 
-        {/* Skills grid with stagger */}
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: '-50px' }}
+          viewport={{ once: true, margin: '-60px' }}
           variants={{
             hidden: { opacity: 0 },
-            visible: {
-              opacity: 1,
-              transition: { staggerChildren: 0.1 },
-            },
+            visible: { opacity: 1, transition: { staggerChildren: 0.07 } },
           }}
-          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid gap-x-10 sm:grid-cols-2 lg:grid-cols-3"
         >
-          {skillCategories.map((category) => {
-            const Icon = iconMap[category.icon] || Server
-            return (
-              <motion.div
-                key={category.title}
-                variants={{
-                  hidden: { opacity: 0, y: 40, scale: 0.9 },
-                  visible: {
-                    opacity: 1,
-                    y: 0,
-                    scale: 1,
-                    transition: { type: 'spring', stiffness: 100, damping: 15 },
-                  },
-                }}
-                whileHover={{ y: -6 }}
-                transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-              >
-                <Card className="h-full hover:shadow-lg transition-shadow hover:border-primary/40 p-6 group">
-                  <div className="flex items-center gap-3 mb-5">
-                    <motion.div
-                      whileHover={{ rotate: 15, scale: 1.15 }}
-                      transition={{ type: 'spring', stiffness: 300 }}
-                      className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary"
-                    >
-                      <Icon className="h-5 w-5" />
-                    </motion.div>
-                    <h3 className="font-semibold text-base">{category.title}</h3>
-                  </div>
-
-                  {/* Skills with staggered hover */}
-                  <motion.div
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    variants={{
-                      hidden: { opacity: 0 },
-                      visible: {
-                        opacity: 1,
-                        transition: { staggerChildren: 0.03, delayChildren: 0.2 },
-                      },
-                    }}
-                    className="flex flex-wrap gap-2"
+          {skillCategories.map((category) => (
+            <motion.div
+              key={category.title}
+              variants={{
+                hidden: { opacity: 0, y: 14 },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+                },
+              }}
+              className="border-t border-border py-6"
+            >
+              <h3 className="text-[13px] font-semibold uppercase tracking-[0.14em] text-foreground/85">
+                {category.title}
+              </h3>
+              <div className="mt-4 flex flex-wrap gap-1.5">
+                {category.skills.map((skill) => (
+                  <span
+                    key={skill.name}
+                    title={`Nivel: ${skill.level}`}
+                    className={cn(
+                      'chip',
+                      skill.level === 'Experto' &&
+                        'border-foreground/25 font-semibold text-foreground'
+                    )}
                   >
-                    {category.skills.map((skill) => (
-                      <motion.span
-                        key={skill.name}
-                        variants={{
-                          hidden: { opacity: 0, scale: 0 },
-                          visible: {
-                            opacity: 1,
-                            scale: 1,
-                            transition: {
-                              type: 'spring',
-                              stiffness: 300,
-                              damping: 20,
-                            },
-                          },
-                        }}
-                        whileHover={{
-                          scale: 1.1,
-                          y: -2,
-                          transition: { type: 'spring', stiffness: 400 },
-                        }}
-                        className={`px-2.5 py-1 text-xs font-medium rounded-md border border-border/60 cursor-default ${
-                          levelColors[skill.level]
-                        }`}
-                        title={`Nivel: ${skill.level}`}
-                      >
-                        {skill.name}
-                      </motion.span>
-                    ))}
-                  </motion.div>
-                </Card>
-              </motion.div>
-            )
-          })}
+                    {skill.name}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          ))}
         </motion.div>
       </div>
     </section>

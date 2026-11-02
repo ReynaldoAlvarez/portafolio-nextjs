@@ -1,145 +1,115 @@
 'use client'
 
-import { motion, useScroll, useSpring } from 'framer-motion'
-import { useRef } from 'react'
-import { Briefcase, MapPin, Calendar, CheckCircle2 } from 'lucide-react'
-import { Card } from '@/components/ui/card'
+import { motion } from 'framer-motion'
 import { experiences } from '@/lib/portfolio-data'
+import { SectionHeading } from './section-heading'
 
 export function Experience() {
-  const ref = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start end', 'end start'],
-  })
-  const scaleY = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001,
-  })
-
   return (
-    <section id="experiencia" className="section-anchor py-20 lg:py-28">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Section header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-12"
-        >
-          <span className="text-sm font-semibold uppercase tracking-widest text-primary bg-primary/10 px-3 py-1 rounded-full font-mono">
-            {'// trayectoria'}
-          </span>
-          <h2 className="mt-2 text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">
-            Experiencia <span className="gradient-text">profesional</span>
-          </h2>
-          <motion.div
-            initial={{ width: 0 }}
-            whileInView={{ width: '60px' }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="h-1 bg-gradient-to-r from-primary to-accent mx-auto mt-4 rounded-full"
-          />
-          <p className="mt-4 text-base text-muted-foreground max-w-2xl mx-auto">
-            Más de 12 años construyendo software para empresas en Bolivia,
-            España y Estados Unidos. Trayectoria desde 2015 en ingeniería de software.
-          </p>
-        </motion.div>
+    <section
+      id="experiencia"
+      className="section-anchor scroll-mt-24 py-20 lg:py-28"
+    >
+      <div className="container-portfolio">
+        <SectionHeading
+          index="05"
+          eyebrow="Trayectoria"
+          title={
+            <>
+              Experiencia{' '}
+              <em className="font-light italic">profesional</em>
+            </>
+          }
+          description="Más de 12 años construyendo software para empresas de Bolivia, España y Estados Unidos."
+          className="mb-12 lg:mb-16"
+        />
 
-        {/* Timeline */}
-        <div ref={ref} className="relative max-w-3xl mx-auto">
-          {/* Vertical line */}
-          <div className="absolute left-4 sm:left-1/2 sm:-translate-x-1/2 top-0 bottom-0 w-px bg-border" />
-          <motion.div
-            style={{ scaleY }}
-            className="absolute left-4 sm:left-1/2 sm:-translate-x-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary via-primary to-accent origin-top"
+        <div className="relative max-w-3xl">
+          {/* Timeline rail */}
+          <span
+            className="absolute bottom-2 left-[5px] top-2 w-px bg-foreground/25"
+            aria-hidden="true"
           />
 
-          <div className="space-y-12">
+          <motion.ol
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-60px' }}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: { opacity: 1, transition: { staggerChildren: 0.12 } },
+            }}
+          >
             {experiences.map((exp, idx) => (
-              <motion.div
+              <motion.li
                 key={exp.company}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-100px' }}
-                transition={{ duration: 0.5 }}
-                className={`relative grid sm:grid-cols-2 gap-8 sm:gap-12 ${
-                  idx % 2 === 0 ? '' : 'sm:flex-row-reverse'
-                }`}
+                variants={{
+                  hidden: { opacity: 0, y: 16 },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
+                  },
+                }}
+                className="relative pb-12 pl-8 last:pb-0 sm:pl-10"
               >
-                {/* Timeline dot */}
-                <div className="absolute left-4 sm:left-1/2 sm:-translate-x-1/2 top-2 z-10">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-background border-2 border-primary">
-                    <Briefcase className="h-4 w-4 text-primary" />
-                  </div>
-                </div>
-
-                {/* Content card */}
-                <div
-                  className={`pl-12 sm:pl-0 ${
-                    idx % 2 === 0
-                      ? 'sm:pr-12 sm:text-right'
-                      : 'sm:col-start-2 sm:pl-12'
-                  }`}
+                {/* Node */}
+                <span
+                  className="absolute left-0 top-[7px] flex h-[11px] w-[11px] items-center justify-center rounded-full border border-border bg-background shadow-2xs"
+                  aria-hidden="true"
                 >
-                  <Card className="p-6 hover:shadow-md transition-shadow hover:border-primary/40">
-                    <div
-                      className={`flex flex-col gap-2 ${
-                        idx % 2 === 0 ? 'sm:items-end' : ''
-                      }`}
-                    >
-                      <div className="flex items-center gap-2 flex-wrap sm:justify-start">
-                        <Calendar className="h-3.5 w-3.5 text-muted-foreground" />
-                        <span className="text-xs font-medium text-muted-foreground">
-                          {exp.period}
-                        </span>
-                      </div>
-                      <h3 className="text-lg font-semibold">{exp.position}</h3>
+                  {idx === 0 && (
+                    <span className="status-dot h-[5px] w-[5px] rounded-full bg-primary" />
+                  )}
+                </span>
+
+                <div className="grid gap-1.5 sm:grid-cols-[150px_1fr] sm:gap-8">
+                  <div className="tnum text-xs font-medium text-muted-foreground sm:pt-1.5">
+                    {exp.period}
+                  </div>
+
+                  <div>
+                    <h3 className="text-xl font-medium tracking-tight">
+                      {exp.position}
+                    </h3>
+                    <div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm">
                       <a
                         href={exp.companyLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-sm font-medium text-primary hover:underline"
+                        className="link-underline font-medium text-primary"
                       >
-                        @{exp.company}
+                        {exp.company}
                       </a>
-                      <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
-                        <MapPin className="h-3 w-3" />
+                      <span className="text-muted-foreground/60">·</span>
+                      <span className="text-xs text-muted-foreground">
                         {exp.location}
-                      </div>
+                      </span>
                     </div>
 
-                    <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                    <p className="mt-3 max-w-[62ch] text-[15px] leading-relaxed text-muted-foreground">
                       {exp.description}
                     </p>
 
-                    <div
-                      className={`mt-4 space-y-1.5 ${
-                        idx % 2 === 0 ? 'sm:text-right' : ''
-                      }`}
-                    >
-                      {exp.achievements.map((achievement, i) => (
-                        <div
-                          key={i}
-                          className={`flex items-start gap-2 text-xs ${
-                            idx % 2 === 0 ? 'sm:flex-row-reverse sm:text-right' : ''
-                          }`}
+                    <ul className="mt-4 space-y-2">
+                      {exp.achievements.map((achievement) => (
+                        <li
+                          key={achievement}
+                          className="flex max-w-[62ch] gap-2.5 text-[13px] leading-relaxed text-muted-foreground"
                         >
-                          <CheckCircle2 className="h-3.5 w-3.5 text-primary flex-shrink-0 mt-0.5" />
-                          <span className="text-muted-foreground">{achievement}</span>
-                        </div>
+                          <span
+                            className="mt-[7px] h-px w-3 shrink-0 bg-primary/70"
+                            aria-hidden="true"
+                          />
+                          {achievement}
+                        </li>
                       ))}
-                    </div>
-                  </Card>
+                    </ul>
+                  </div>
                 </div>
-
-                {/* Empty div for alternating layout */}
-                <div className="hidden sm:block" />
-              </motion.div>
+              </motion.li>
             ))}
-          </div>
+          </motion.ol>
         </div>
       </div>
     </section>

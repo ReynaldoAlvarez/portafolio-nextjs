@@ -1,28 +1,24 @@
 import type { Metadata, Viewport } from "next";
-import { Space_Grotesk, JetBrains_Mono, Geist, Geist_Mono } from "next/font/google";
+import { Fraunces, Instrument_Sans, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as SonnerToaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "@/components/portfolio/theme-provider";
+import { MotionProvider } from "@/components/portfolio/motion-provider";
 
-// Retro-modern typography: Space Grotesk (geometric display) + JetBrains Mono (code)
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
+// Editorial typography: Fraunces (soft display serif, with italic) +
+// Instrument Sans (refined grotesque for body/UI). Geist Mono only for
+// small data labels (years, coordinates).
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
   subsets: ["latin"],
   display: "swap",
-  weight: ["300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  axes: ["SOFT", "WONK", "opsz"],
 });
 
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["400", "500", "600", "700"],
-});
-
-// Keep Geist as fallback
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const instrumentSans = Instrument_Sans({
+  variable: "--font-instrument-sans",
   subsets: ["latin"],
   display: "swap",
 });
@@ -200,8 +196,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#1a4d3a" },
-    { media: "(prefers-color-scheme: dark)", color: "#0a1a14" },
+    { media: "(prefers-color-scheme: light)", color: "#faf8f5" },
+    { media: "(prefers-color-scheme: dark)", color: "#1b1a17" },
   ],
   width: "device-width",
   initialScale: 1,
@@ -318,15 +314,12 @@ export default function RootLayout({
             __html: JSON.stringify([personSchema, websiteSchema, professionalServiceSchema]),
           }}
         />
-        {/* Preconnect for performance */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         {/* DNS prefetch for external resources */}
         <link rel="dns-prefetch" href="https://github.com" />
         <link rel="dns-prefetch" href="https://vercel.com" />
       </head>
       <body
-        className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} ${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground min-h-screen flex flex-col`}
+        className={`${fraunces.variable} ${instrumentSans.variable} ${geistMono.variable} antialiased bg-background text-foreground min-h-screen flex flex-col`}
       >
         <ThemeProvider
           attribute="class"
@@ -334,9 +327,11 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
-          <Toaster />
-          <SonnerToaster />
+          <MotionProvider>
+            {children}
+            <Toaster />
+            <SonnerToaster />
+          </MotionProvider>
         </ThemeProvider>
       </body>
     </html>
