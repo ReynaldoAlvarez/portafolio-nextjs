@@ -4,19 +4,28 @@ import { useEffect, useState } from "react";
 import { ArrowUp } from "lucide-react";
 
 export function Footer() {
-  const [time, setTime] = useState<string | null>(null);
+  const [lp, setLp] = useState<string | null>(null);
+  const [md, setMd] = useState<string | null>(null);
 
   useEffect(() => {
-    const fmt = new Intl.DateTimeFormat("es-BO", {
+    const fLP = new Intl.DateTimeFormat("es-BO", {
       hour: "2-digit",
       minute: "2-digit",
-      second: "2-digit",
       hour12: false,
       timeZone: "America/La_Paz",
     });
-    const tick = () => setTime(fmt.format(new Date()));
+    const fMD = new Intl.DateTimeFormat("es-ES", {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false,
+      timeZone: "Europe/Madrid",
+    });
+    const tick = () => {
+      setLp(fLP.format(new Date()));
+      setMd(fMD.format(new Date()));
+    };
     tick();
-    const id = setInterval(tick, 1000);
+    const id = setInterval(tick, 30000);
     return () => clearInterval(id);
   }, []);
 
@@ -24,15 +33,18 @@ export function Footer() {
     <footer className="mt-auto border-t border-white/10 bg-[#0d0d0f]/60">
       <div className="mx-auto grid max-w-7xl gap-6 px-6 py-8 md:grid-cols-3 md:items-center">
         <p className="order-2 font-mono text-xs text-zinc-600 md:order-1">
-          © 2026 Reynaldo Alvarez — La Paz, Bolivia
+          © 2026 Vidal Reynaldo Alvarez Challco — EMI · GEOPOIS.COM
         </p>
 
         <p className="order-1 font-mono text-xs text-zinc-500 md:order-2 md:text-center">
           La Paz{" "}
           <span className="text-volt tabular-nums" suppressHydrationWarning>
-            {time ?? "--:--:--"}
+            {lp ?? "--:--"}
           </span>{" "}
-          <span className="text-zinc-700">·</span> v2.0 — Next.js + Tailwind
+          <span className="text-zinc-700">·</span> Madrid{" "}
+          <span className="text-volt tabular-nums" suppressHydrationWarning>
+            {md ?? "--:--"}
+          </span>
         </p>
 
         <div className="order-3 md:text-right">

@@ -2,79 +2,87 @@
 
 import Image from "next/image";
 import type { MouseEvent } from "react";
+import { ArrowUpRight } from "lucide-react";
 import { Reveal } from "./reveal";
 import { SectionHeading } from "./section-heading";
+
+type ProjectLink = { label: string; href: string };
 
 type Project = {
   img: string;
   alt: string;
   title: string;
-  year: string;
   cat: string;
   desc: string;
   tags: string[];
   metric: string;
   metricLabel: string;
+  links: ProjectLink[];
   span: string;
   sizes: string;
 };
 
 const PROJECTS: Project[] = [
   {
-    img: "/images/proj-nova.jpg",
-    alt: "Interfaz del dashboard Nova Analytics en modo oscuro con gráficos y acentos lima",
-    title: "Nova Analytics",
-    year: "2026",
-    cat: "SaaS",
-    desc: "Dashboard de métricas en tiempo real: visualización de datos a 60 fps, roles, alertas y un design system de 40+ componentes.",
-    tags: ["Next.js", "TypeScript", "D3.js"],
-    metric: "+38%",
-    metricLabel: "retención de usuarios",
+    img: "/images/proj-luminia.jpg",
+    alt: "Arquitectura backend de Luminia: nodos de IA conectando paneles de código y terminales",
+    title: "Luminia",
+    cat: "SaaS · Educación",
+    desc: "API SaaS para educación con inteligencia artificial integrada. TypeScript, Prisma y Docker, desplegada en Vercel — mi proyecto insignia del dominio educativo.",
+    tags: ["TypeScript", "Prisma", "Docker", "Vercel"],
+    metric: "IA",
+    metricLabel: "integrada en el core",
+    links: [
+      { label: "Código", href: "https://github.com/ReynaldoAlvarez/api-edu-saas-luminia" },
+      { label: "Demo", href: "https://api-edu-saas-luminia.vercel.app" },
+    ],
     span: "lg:col-span-7",
     sizes: "(max-width: 1024px) 100vw, 58vw",
   },
   {
-    img: "/images/proj-atlas.jpg",
-    alt: "Tienda de moda Atlas Commerce con tipografía editorial y fotografía monocromática",
-    title: "Atlas Commerce",
-    year: "2025",
-    cat: "E-commerce",
-    desc: "Tienda headless para una marca de moda: checkout de un paso, búsqueda instantánea y CMS editorial para drops.",
-    tags: ["Next.js", "Shopify", "Tailwind"],
-    metric: "0.8s",
-    metricLabel: "LCP promedio",
+    img: "/images/proj-geopois.jpg",
+    alt: "Mapa mundial con puntos de datos y arcos de conexión: plataforma de geointeligencia de GEOPOIS",
+    title: "GEOPOIS",
+    cat: "Geointeligencia",
+    desc: "Arquitectura de plataformas de geointeligencia en Madrid: GIS, web mapping, geomarketing y web scraping sobre PostgreSQL/PostGIS.",
+    tags: ["PostgreSQL", "PostGIS", "GIS"],
+    metric: "Madrid",
+    metricLabel: "arquitecto de software",
+    links: [{ label: "Sitio", href: "https://geopois.com" }],
     span: "lg:col-span-5",
     sizes: "(max-width: 1024px) 100vw, 40vw",
   },
   {
-    img: "/images/proj-pulse.jpg",
-    alt: "App móvil Pulse con anillos de actividad y estadísticas de salud en modo oscuro",
-    title: "Pulse",
-    year: "2025",
-    cat: "Mobile",
-    desc: "App de hábitos y bienestar: anillos de actividad, rachas y estadísticas. 40 mil descargas en su primer mes.",
-    tags: ["React Native", "Figma", "Motion"],
-    metric: "40k",
-    metricLabel: "descargas / mes 1",
+    img: "/images/proj-gmaps.jpg",
+    alt: "Interfaz de mapa minimalista con marcadores de ruta y módulos utilitarios de JavaScript",
+    title: "GMaps Utilities",
+    cat: "Open Source",
+    desc: "Utilidades y mejoras sobre la librería oficial de Google Maps JavaScript API v3 — contribuciones al ecosistema de web mapping.",
+    tags: ["JavaScript", "GIS", "Open Source"],
+    metric: "v3",
+    metricLabel: "Google Maps JS API",
+    links: [
+      { label: "Código", href: "https://github.com/ReynaldoAlvarez/v3-utility-library" },
+    ],
     span: "lg:col-span-5",
     sizes: "(max-width: 1024px) 100vw, 40vw",
   },
   {
-    img: "/images/proj-lumen.jpg",
-    alt: "Escultura líquida 3D con reflejos iridiscentes para el sitio inmersivo de Lumen Studio",
-    title: "Lumen Studio",
-    year: "2026",
-    cat: "WebGL",
-    desc: "Sitio inmersivo con WebGL: esculturas líquidas que reaccionan al scroll. Mención de honor en Awwwards.",
-    tags: ["Three.js", "WebGL", "GSAP"],
-    metric: "98",
-    metricLabel: "Lighthouse",
+    img: "/images/proj-bunkerdev.jpg",
+    alt: "Estudio de código con pantalla mostrando código y botón de reproducción: canal BunkerDev",
+    title: "BunkerDev",
+    cat: "Educación tech",
+    desc: "Canal de contenido formativo de tecnología: la educación es mi dominio — también enseñando cómo se construye.",
+    tags: ["Contenido", "Educación", "Tech"],
+    metric: "YouTube",
+    metricLabel: "@bunkerdev",
+    links: [{ label: "Canal", href: "https://www.youtube.com/@bunkerdev" }],
     span: "lg:col-span-7",
     sizes: "(max-width: 1024px) 100vw, 58vw",
   },
 ];
 
-/* Spotlight: actualiza --mx/--my en la card (heredan al layer .spotlight) */
+/* Spotlight: actualiza --mx/--my en la card */
 function onSpotlight(e: MouseEvent<HTMLElement>) {
   const el = e.currentTarget;
   const r = el.getBoundingClientRect();
@@ -106,11 +114,9 @@ function ProjectCard({ p, i }: { p: Project; i: number }) {
             aria-hidden
             className="spotlight absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
           />
-          {/* Categoría + año */}
           <span className="absolute left-4 top-4 rounded-full border border-white/15 bg-black/45 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-300 backdrop-blur">
-            {p.cat} · {p.year}
+            {p.cat}
           </span>
-          {/* Métrica de impacto */}
           <span className="absolute bottom-4 right-4 flex items-baseline gap-2 rounded-full border border-white/10 bg-black/45 px-3.5 py-1.5 backdrop-blur">
             <span className="font-display text-lg font-semibold text-volt">
               {p.metric}
@@ -133,6 +139,8 @@ function ProjectCard({ p, i }: { p: Project; i: number }) {
           <p className="mt-3 max-w-lg text-sm leading-relaxed text-zinc-400">
             {p.desc}
           </p>
+
+          {/* Tags + links reales */}
           <div className="mt-5 flex flex-wrap gap-2">
             {p.tags.map((t) => (
               <span
@@ -141,6 +149,20 @@ function ProjectCard({ p, i }: { p: Project; i: number }) {
               >
                 {t}
               </span>
+            ))}
+          </div>
+          <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 border-t border-white/10 pt-4">
+            {p.links.map((l) => (
+              <a
+                key={l.label}
+                href={l.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-[0.16em] text-zinc-400 transition-colors hover:text-volt"
+              >
+                {l.label}
+                <ArrowUpRight className="size-3.5" aria-hidden />
+              </a>
             ))}
           </div>
         </div>
@@ -155,11 +177,12 @@ export function Projects() {
       <div className="mx-auto max-w-7xl px-6">
         <Reveal>
           <SectionHeading
-            index="02"
+            index="03"
+            total="05"
             label="Proyectos"
             title={
               <>
-                Trabajo <span className="text-outline-volt">seleccionado</span>
+                Trabajo <span className="text-outline-volt">real</span>
               </>
             }
           />
@@ -167,8 +190,8 @@ export function Projects() {
 
         <Reveal delay={0.06}>
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-zinc-400">
-            Una muestra de lo que construyo: productos con métricas reales, no
-            solo capturas bonitas.
+            Proyectos verificables con enlaces directos: código en GitHub,
+            plataformas en producción y contenido publicado.
           </p>
         </Reveal>
 
@@ -180,12 +203,14 @@ export function Projects() {
 
         <Reveal delay={0.1}>
           <p className="mt-12 font-mono text-sm text-zinc-500">
-            ¿Quieres algo así para tu marca?{" "}
+            ¿Quieres ver el resto?{" "}
             <a
-              href="#contacto"
+              href="https://github.com/ReynaldoAlvarez?tab=repositories"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-volt underline-offset-4 transition-colors hover:underline"
             >
-              Hablemos →
+              Todos mis repositorios →
             </a>
           </p>
         </Reveal>

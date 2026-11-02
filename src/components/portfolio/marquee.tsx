@@ -1,19 +1,21 @@
 import { Asterisk } from "lucide-react";
 
 const STACK = [
-  "React",
-  "Next.js",
   "TypeScript",
-  "Tailwind CSS",
   "Node.js",
-  "Framer Motion",
-  "Prisma",
-  "Figma",
   "PostgreSQL",
+  "PostGIS",
+  "Prisma",
+  "Docker",
+  "React",
+  "APIs REST",
+  "GIS",
+  "OpenLayers",
+  "Vercel",
   "Git",
 ];
 
-/** Cinta infinita de tecnologías. Pausa al hacer hover. */
+/** Cinta infinita de tecnologías reales. Pausa al hacer hover. */
 export function Marquee() {
   return (
     <section

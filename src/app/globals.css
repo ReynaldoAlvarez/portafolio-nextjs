@@ -163,13 +163,6 @@
   color: transparent;
 }
 
-@utility bg-grid {
-  background-image:
-    linear-gradient(to right, rgb(255 255 255 / 0.045) 1px, transparent 1px),
-    linear-gradient(to bottom, rgb(255 255 255 / 0.045) 1px, transparent 1px);
-  background-size: 76px 76px;
-}
-
 @utility noise-overlay {
   position: fixed;
   inset: 0;

@@ -21,26 +21,30 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Reynaldo Alvarez — Desarrollador Creativo",
+  title: "Reynaldo Alvarez — Software Engineer & Architect",
   description:
-    "Portafolio de Reynaldo Alvarez. Diseño y construyo experiencias digitales rápidas, accesibles y memorables: front-end, UI/UX, e-commerce y performance.",
+    "Vidal Reynaldo Alvarez Challco. Ingeniero de software (EMI 2012) especializado en backend y arquitectura: soluciones a medida con IA para educación y geointeligencia. Arquitecto de software en GEOPOIS.COM (Madrid).",
   keywords: [
     "Reynaldo Alvarez",
-    "portafolio",
-    "desarrollador creativo",
-    "front-end",
-    "UI/UX",
-    "Next.js",
-    "React",
+    "Vidal Reynaldo Alvarez Challco",
+    "software engineer",
+    "software architect",
+    "backend",
+    "arquitectura de software",
+    "TypeScript",
+    "GEOPOIS",
+    "EMI",
+    "educación e IA",
+    "geointeligencia",
     "La Paz",
-    "Bolivia",
+    "Madrid",
   ],
-  authors: [{ name: "Reynaldo Alvarez" }],
+  authors: [{ name: "Vidal Reynaldo Alvarez Challco" }],
   icons: { icon: "/favicon.svg" },
   openGraph: {
-    title: "Reynaldo Alvarez — Desarrollador Creativo",
+    title: "Reynaldo Alvarez — Software Engineer & Architect",
     description:
-      "Diseño y construyo experiencias digitales rápidas, accesibles y memorables.",
+      "Backend, arquitecturas a medida e IA aplicada a la educación. GEOPOIS Madrid · EMI 2012.",
     siteName: "Reynaldo Alvarez",
     type: "website",
     locale: "es_BO",

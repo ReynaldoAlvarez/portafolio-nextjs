@@ -22,55 +22,55 @@ type Service = {
 const SERVICES: Service[] = [
   {
     num: "01",
-    title: "Desarrollo Front-End",
-    sub: "Interfaces vivas a 60 fps",
-    desc: "Aplicaciones web con React y Next.js: arquitectura escalable, tipado estricto y micro-interacciones que responden en milisegundos. Performance budget desde el primer commit.",
+    title: "Arquitectura de Software",
+    sub: "La decisión correcta para cada problema",
+    desc: "Evaluación y diseño de la arquitectura que el problema pide — no la que está de moda: capas, hexagonal, microservicios o event-driven, documentada con criterio y lista para escalar.",
     deliverables: [
-      "SPAs, SSR e ISR",
-      "Design systems componentizados",
-      "Migraciones y refactorizaciones",
-      "Testing unitario y E2E",
+      "Evaluación y ADRs",
+      "Diseño de sistemas a medida",
+      "Revisión de arquitectura",
+      "Roadmaps técnicos",
     ],
-    stack: ["Next.js", "React", "TypeScript", "Tailwind", "Framer Motion"],
+    stack: ["C4", "ADR", "DDD", "Escalabilidad"],
   },
   {
     num: "02",
-    title: "Diseño UI/UX",
-    sub: "De research a handoff",
-    desc: "Investigación, arquitectura de información y prototipos de alta fidelidad. Diseño en Figma con tokens que se traducen 1:1 a código — sin píxeles perdidos en el camino.",
+    title: "Desarrollo Backend",
+    sub: "APIs sólidas, tipadas y probadas",
+    desc: "El backend es mi especialidad: APIs REST con TypeScript y Node.js, modelado de datos con Prisma sobre PostgreSQL, y despliegues limpios con Docker.",
     deliverables: [
-      "Auditoría y research",
-      "Wireframes y flujos",
-      "UI kits y prototipos",
-      "Design tokens",
+      "APIs REST de producción",
+      "Modelado de datos (Prisma)",
+      "Integraciones y pipelines",
+      "Testing y CI/CD",
     ],
-    stack: ["Figma", "FigJam", "Auto Layout", "Variables"],
+    stack: ["TypeScript", "Node.js", "Prisma", "PostgreSQL", "Docker"],
   },
   {
     num: "03",
-    title: "E-Commerce & CMS",
-    sub: "Tiendas que venden",
-    desc: "Tiendas headless y catálogos editoriales con checkout optimizado, búsqueda instantánea y un CMS que tu equipo no técnico puede manejar sin pedir ayuda.",
+    title: "Educación + IA",
+    sub: "Mi dominio: enseñar y construir para enseñar",
+    desc: "Es donde más soluciones he construido. Plataformas educativas SaaS escritas a mano, hoy potenciadas con inteligencia artificial integrada — como Luminia.",
     deliverables: [
-      "Shopify headless",
-      "Checkout personalizado",
-      "Integraciones de pago",
-      "Analítica y reportes",
+      "SaaS educativo (Luminia)",
+      "IA integrada al core",
+      "Contenido formativo (BunkerDev)",
+      "Formación de equipos",
     ],
-    stack: ["Next.js", "Shopify", "Hydrogen", "Prisma"],
+    stack: ["Luminia", "TypeScript", "Vercel"],
   },
   {
     num: "04",
-    title: "Performance & SEO",
-    sub: "Core Web Vitals en verde",
-    desc: "Auditorías y optimización integral: LCP bajo 1 segundo, CLS de 0 y accesibilidad AA. SEO técnico para que tu sitio posicione desde el lanzamiento.",
+    title: "Geointeligencia",
+    sub: "Sistemas geoespaciales a escala",
+    desc: "Lo que hago en GEOPOIS.COM (Madrid): plataformas de GIS, web mapping y geomarketing sobre el stack geoespacial de producción.",
     deliverables: [
-      "Auditoría Lighthouse",
-      "Optimización de imágenes",
-      "SEO técnico y schema",
-      "Monitoreo continuo",
+      "Plataformas GIS",
+      "Web mapping interactivo",
+      "Web scraping y datos",
+      "Geomarketing",
     ],
-    stack: ["Lighthouse", "Vercel", "Search Console"],
+    stack: ["PostGIS", "Leaflet", "Mapbox", "OpenLayers", "GeoServer"],
   },
 ];
 
@@ -80,11 +80,12 @@ export function Services() {
       <div className="mx-auto max-w-7xl px-6">
         <Reveal>
           <SectionHeading
-            index="03"
+            index="04"
+            total="05"
             label="Servicios"
             title={
               <>
-                Lo que puedo <span className="text-volt">hacer por ti</span>
+                Lo que puedo <span className="text-volt">construir por ti</span>
               </>
             }
           />

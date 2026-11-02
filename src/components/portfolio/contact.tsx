@@ -1,33 +1,32 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
-import { Check, Copy, Github, Instagram, Linkedin, Mail, Twitter } from "lucide-react";
+import { Download, Github, Linkedin, Youtube } from "lucide-react";
 import { Reveal } from "./reveal";
 import { SectionHeading } from "./section-heading";
 
-const EMAIL = "hola@reynaldoalvarez.com";
-
 const SOCIALS = [
-  { name: "GitHub", href: "https://github.com", Icon: Github },
-  { name: "LinkedIn", href: "https://linkedin.com", Icon: Linkedin },
-  { name: "X (Twitter)", href: "https://x.com", Icon: Twitter },
-  { name: "Instagram", href: "https://instagram.com", Icon: Instagram },
+  {
+    name: "LinkedIn",
+    handle: "vidal-reynaldo-alvarez-challco",
+    href: "https://www.linkedin.com/in/vidal-reynaldo-alvarez-challco-46633584/",
+    Icon: Linkedin,
+  },
+  {
+    name: "GitHub",
+    handle: "@ReynaldoAlvarez",
+    href: "https://github.com/ReynaldoAlvarez",
+    Icon: Github,
+  },
+  {
+    name: "YouTube",
+    handle: "@bunkerdev",
+    href: "https://www.youtube.com/@bunkerdev",
+    Icon: Youtube,
+  },
 ];
 
 export function Contact() {
-  const [copied, setCopied] = useState(false);
-
-  const copyEmail = async () => {
-    try {
-      await navigator.clipboard.writeText(EMAIL);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch {
-      /* portapapeles no disponible */
-    }
-  };
-
   return (
     <section id="contacto" className="relative overflow-hidden py-28 md:py-40">
       {/* Glow ambiental */}
@@ -38,72 +37,87 @@ export function Contact() {
 
       <div className="relative mx-auto max-w-7xl px-6">
         <Reveal>
-          <SectionHeading index="04" label="Contacto" title={<>Hagámoslo real</>} />
+          <SectionHeading
+            index="05"
+            total="05"
+            label="Contacto"
+            title={<>Hagámoslo real</>}
+          />
         </Reveal>
 
         <Reveal delay={0.08}>
           <h3 className="mt-12 font-display text-[clamp(2.6rem,8vw,6.5rem)] font-bold leading-[0.95] tracking-[-0.03em]">
-            ¿Tienes una{" "}
-            <span className="text-outline">idea</span> en mente?
+            ¿Tienes un <span className="text-outline">sistema</span> en mente?
             <br />
-            Hagámosla <span className="text-volt">realidad</span>.
+            Diseñémoslo <span className="text-volt">juntos</span>.
           </h3>
         </Reveal>
 
-        <Reveal delay={0.14}>
-          <div className="mt-14 flex flex-col gap-6 md:flex-row md:items-center">
-            {/* Email: clic para copiar */}
-            <button
-              type="button"
-              data-cursor
-              onClick={copyEmail}
-              aria-label={`Copiar email ${EMAIL}`}
-              className="group inline-flex items-center gap-4 rounded-full border border-white/15 bg-white/[0.03] py-4 pl-7 pr-5 transition-colors duration-300 hover:border-volt/60"
-            >
-              <Mail className="size-5 shrink-0 text-volt" aria-hidden />
-              <span className="font-mono text-sm text-zinc-200 md:text-base">
-                {EMAIL}
+        {/* CV destacado */}
+        <Reveal delay={0.12}>
+          <a
+            href="/cv-reynaldo-alvarez.pdf"
+            download
+            data-cursor
+            className="group mt-14 flex max-w-2xl flex-col gap-5 rounded-2xl border border-white/10 bg-white/[0.02] p-7 transition-colors duration-300 hover:border-volt/50 md:flex-row md:items-center md:justify-between md:p-8"
+          >
+            <div className="flex items-center gap-5">
+              <span className="grid size-14 shrink-0 place-items-center rounded-2xl bg-volt text-[#0a0a0b] transition-shadow duration-300 group-hover:shadow-[0_0_32px_rgba(200,245,80,0.4)]">
+                <Download className="size-6" aria-hidden />
               </span>
-              <span className="grid size-9 shrink-0 place-items-center rounded-full border border-white/15 transition-colors group-hover:border-volt/60">
-                {copied ? (
-                  <motion.span
-                    initial={{ scale: 0.5, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    className="text-volt"
-                  >
-                    <Check className="size-4" aria-hidden />
-                  </motion.span>
-                ) : (
-                  <Copy className="size-4 text-zinc-400" aria-hidden />
-                )}
-                <span className="sr-only">
-                  {copied ? "Copiado" : "Copiar"}
-                </span>
-              </span>
-            </button>
-
-            {/* Redes */}
-            <div className="flex flex-wrap items-center gap-3">
-              {SOCIALS.map(({ name, href, Icon }) => (
-                <a
-                  key={name}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={name}
-                  className="grid size-11 place-items-center rounded-full border border-white/15 text-zinc-400 transition-all duration-300 hover:border-volt/50 hover:text-volt"
-                >
-                  <Icon className="size-[18px]" aria-hidden />
-                </a>
-              ))}
+              <div>
+                <p className="font-display text-lg font-semibold tracking-tight text-zinc-100">
+                  Descarga mi CV
+                </p>
+                <p className="mt-1 font-mono text-xs text-zinc-500">
+                  PDF · 1 página · datos verificables
+                </p>
+              </div>
             </div>
+            <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-zinc-500 transition-colors group-hover:text-volt">
+              cv-reynaldo-alvarez.pdf →
+            </span>
+          </a>
+        </Reveal>
+
+        {/* Redes reales */}
+        <Reveal delay={0.16}>
+          <div className="mt-10 grid gap-4 sm:grid-cols-3">
+            {SOCIALS.map(({ name, handle, href, Icon }) => (
+              <a
+                key={name}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-4 rounded-2xl border border-white/10 p-5 transition-colors duration-300 hover:border-volt/50"
+              >
+                <span className="grid size-11 shrink-0 place-items-center rounded-full border border-white/15 text-zinc-400 transition-colors duration-300 group-hover:border-volt/60 group-hover:text-volt">
+                  <Icon className="size-[18px]" aria-hidden />
+                </span>
+                <span className="min-w-0">
+                  <span className="block font-display text-base font-semibold text-zinc-100">
+                    {name}
+                  </span>
+                  <span className="block truncate font-mono text-xs text-zinc-500">
+                    {handle}
+                  </span>
+                </span>
+                <motion.span
+                  aria-hidden
+                  className="ml-auto text-volt opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                >
+                  ↗
+                </motion.span>
+              </a>
+            ))}
           </div>
         </Reveal>
 
         <Reveal delay={0.2}>
           <p className="mt-12 flex items-center gap-3 font-mono text-xs text-zinc-500">
             <span className="dot-ping relative size-1.5 rounded-full bg-volt" />
-            Disponible para freelance — Q1 2027 · Respondo en menos de 24 h
+            Disponible para oportunidades internacionales — backend ·
+            arquitectura · IA
           </p>
         </Reveal>
       </div>

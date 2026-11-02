@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Menu } from "lucide-react";
+import { ArrowUpRight, Download, Menu } from "lucide-react";
 import {
   Sheet,
   SheetContent,
@@ -12,10 +12,13 @@ import {
 
 const LINKS = [
   { href: "#sobre-mi", label: "Sobre mí", num: "01" },
-  { href: "#proyectos", label: "Proyectos", num: "02" },
-  { href: "#servicios", label: "Servicios", num: "03" },
-  { href: "#contacto", label: "Contacto", num: "04" },
+  { href: "#trayectoria", label: "Trayectoria", num: "02" },
+  { href: "#proyectos", label: "Proyectos", num: "03" },
+  { href: "#servicios", label: "Servicios", num: "04" },
+  { href: "#contacto", label: "Contacto", num: "05" },
 ];
+
+const CV_URL = "/cv-reynaldo-alvarez.pdf";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -47,20 +50,37 @@ export function Navbar() {
         </a>
 
         {/* Nav desktop */}
-        <nav aria-label="Principal" className="hidden items-center gap-8 md:flex">
+        <nav
+          aria-label="Principal"
+          className="hidden items-center gap-6 lg:flex"
+        >
           {LINKS.map((l) => (
             <a
               key={l.href}
               href={l.href}
-              className="group font-mono text-[12px] uppercase tracking-[0.22em] text-zinc-500 transition-colors hover:text-zinc-100"
+              className="font-mono text-[11px] uppercase tracking-[0.2em] text-zinc-500 transition-colors hover:text-zinc-100"
             >
-              <span className="mr-1.5 text-volt/80">{l.num}.</span>
+              <span className="mr-1 text-volt/80">{l.num}.</span>
               {l.label}
             </a>
           ))}
+
+          {/* CV */}
           <a
-            href="#contacto"
-            className="ml-2 inline-flex items-center gap-1.5 rounded-full bg-volt px-5 py-2 font-display text-sm font-semibold text-[#0a0a0b] transition-all hover:bg-[#d9ff6e] hover:shadow-[0_0_28px_rgba(200,245,80,0.35)]"
+            href={CV_URL}
+            download
+            className="inline-flex items-center gap-1.5 rounded-full border border-white/15 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.14em] text-zinc-300 transition-all hover:border-volt/60 hover:text-volt"
+          >
+            <Download className="size-3.5" aria-hidden />
+            CV
+          </a>
+
+          {/* CTA */}
+          <a
+            href="https://www.linkedin.com/in/vidal-reynaldo-alvarez-challco-46633584/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 rounded-full bg-volt px-5 py-2 font-display text-sm font-semibold text-[#0a0a0b] transition-all hover:bg-[#d9ff6e] hover:shadow-[0_0_28px_rgba(200,245,80,0.35)]"
           >
             Hablemos
             <ArrowUpRight className="size-4" aria-hidden />
@@ -73,7 +93,7 @@ export function Navbar() {
             <button
               type="button"
               aria-label="Abrir menú"
-              className="grid size-11 place-items-center rounded-full border border-white/15 text-zinc-300 transition-colors hover:border-volt/60 hover:text-volt md:hidden"
+              className="grid size-11 place-items-center rounded-full border border-white/15 text-zinc-300 transition-colors hover:border-volt/60 hover:text-volt lg:hidden"
             >
               <Menu className="size-5" aria-hidden />
             </button>
@@ -101,14 +121,25 @@ export function Navbar() {
                   <span className="font-mono text-xs text-zinc-600">{l.num}</span>
                 </motion.a>
               ))}
+              <motion.a
+                href={CV_URL}
+                download
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.42 }}
+                className="mt-6 inline-flex w-fit items-center gap-2 rounded-full border border-volt/50 px-6 py-3 font-display text-base font-semibold text-volt"
+              >
+                <Download className="size-4" aria-hidden />
+                Descargar CV
+              </motion.a>
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 0.4 }}
+                transition={{ delay: 0.5 }}
                 className="mt-8 font-mono text-xs leading-relaxed text-zinc-500"
               >
-                <p className="text-volt">hola@reynaldoalvarez.com</p>
-                <p className="mt-2">La Paz, Bolivia — UTC−4</p>
+                <p>GEOPOIS.COM · Madrid, ES</p>
+                <p className="mt-2">EMI · La Paz, BO — 2012</p>
               </motion.div>
             </nav>
           </SheetContent>
