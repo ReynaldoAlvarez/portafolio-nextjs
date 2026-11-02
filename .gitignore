@@ -69,3 +69,7 @@ server.log
 
 # Download folder (screenshots, exports)
 /download/
+
+# Platform reverse proxy config and runtime tests
+/Caddyfile
+/tests/
