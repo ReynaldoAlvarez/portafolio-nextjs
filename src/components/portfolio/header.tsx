@@ -26,7 +26,10 @@ export function Header() {
   const { resolvedTheme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
 
-  useEffect(() => setMounted(true), [])
+  useEffect(() => {
+    const raf = requestAnimationFrame(() => setMounted(true))
+    return () => cancelAnimationFrame(raf)
+  }, [])
 
   const handleScroll = useCallback(() => {
     setScrolled(window.scrollY > 16)
@@ -46,9 +49,12 @@ export function Header() {
   }, [])
 
   useEffect(() => {
+    const raf = requestAnimationFrame(handleScroll)
     window.addEventListener('scroll', handleScroll, { passive: true })
-    handleScroll()
-    return () => window.removeEventListener('scroll', handleScroll)
+    return () => {
+      cancelAnimationFrame(raf)
+      window.removeEventListener('scroll', handleScroll)
+    }
   }, [handleScroll])
 
   const isDark = resolvedTheme === 'dark'
