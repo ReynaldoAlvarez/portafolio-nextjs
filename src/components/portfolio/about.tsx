@@ -8,7 +8,7 @@ const PRINCIPLES = [
   },
   {
     t: "Código a mano, con rigor",
-    d: "14 años escribiendo software con las mejores prácticas de la industria: tipado estricto, tests y revisión continua.",
+    d: "12+ años escribiendo software para empresas en Bolivia, España y EE. UU.: tipado estricto, tests y revisión continua.",
   },
   {
     t: "IA como ventaja",
@@ -41,28 +41,28 @@ export function About() {
               <p className="max-w-xl font-display text-2xl font-medium leading-snug tracking-tight text-zinc-300 md:text-[2rem] md:leading-[1.25]">
                 Soy ingeniero de software, graduado de la{" "}
                 <span className="text-volt">Escuela Militar de Ingeniería</span>{" "}
-                en 2012. Desde entonces construí soluciones para educación y
-                distintas empresas, siempre desde el{" "}
-                <span className="text-volt">backend</span> y la arquitectura.
+                en 2012. Mi carrera atraviesa tres empresas que la marcaron:{" "}
+                <span className="text-zinc-100">Hansa</span>,{" "}
+                <span className="text-zinc-100">GEOPOIS</span> y{" "}
+                <span className="text-volt">Luminia</span>.
               </p>
             </Reveal>
             <Reveal delay={0.12}>
               <p className="mt-8 max-w-xl text-base leading-relaxed text-zinc-400">
-                La empresa más importante de mi carrera es{" "}
-                <span className="text-zinc-200">GEOPOIS.COM</span> (Madrid),
-                donde trabajo como{" "}
-                <span className="text-zinc-200">
-                  ingeniero arquitecto de software
-                </span>
-                : diseño sistemas de geointeligencia con GIS, web mapping y
-                geomarketing sobre PostgreSQL/PostGIS.
+                Empecé en <span className="text-zinc-200">Hansa Ltda.</span> (La
+                Paz) como ingeniero de software del área GIS, construyendo su
+                sistema de información geográfica de cero. Luego di el salto a{" "}
+                <span className="text-zinc-200">GEOPOIS.COM</span> (Madrid) como
+                ingeniero y arquitecto principal de software: plataformas de
+                geointeligencia con PostGIS, web mapping y geomarketing.
               </p>
               <p className="mt-4 max-w-xl text-base leading-relaxed text-zinc-400">
-                Mi especialidad es presentar la mejor solución posible: evaluar
-                el problema, elegir la arquitectura correcta y entregar con las
-                mejores prácticas de la industria. Hoy lo hago potenciado con{" "}
-                <span className="text-volt">inteligencia artificial</span> —
-                como en Luminia, mi SaaS educativo con IA integrada.
+                Hoy desarrollo desde <span className="text-zinc-200">Luminia</span>{" "}
+                (luminia.com.bo): software a medida para cada cliente y, sobre
+                todo, proyectos individuales de gran envergadura — lanzados y en
+                producción — potenciados con{" "}
+                <span className="text-volt">inteligencia artificial</span>, como
+                mi SaaS educativo multi-tenant.
               </p>
             </Reveal>
             <Reveal delay={0.18}>
@@ -71,7 +71,7 @@ export function About() {
                   Ahora
                 </span>
                 <span className="font-mono text-xs text-zinc-300">
-                  Arquitecto @ GEOPOIS.COM · Madrid
+                  Soluciones a medida + proyectos propios @ Luminia
                 </span>
                 <span className="dot-ping relative ml-1 size-1.5 rounded-full bg-volt" />
               </div>

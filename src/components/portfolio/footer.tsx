@@ -33,7 +33,7 @@ export function Footer() {
     <footer className="mt-auto border-t border-white/10 bg-[#0d0d0f]/60">
       <div className="mx-auto grid max-w-7xl gap-6 px-6 py-8 md:grid-cols-3 md:items-center">
         <p className="order-2 font-mono text-xs text-zinc-600 md:order-1">
-          © 2026 Vidal Reynaldo Alvarez Challco — EMI · GEOPOIS.COM
+          © 2026 Vidal Reynaldo Alvarez Challco — Hansa · GEOPOIS.COM · Luminia
         </p>
 
         <p className="order-1 font-mono text-xs text-zinc-500 md:order-2 md:text-center">

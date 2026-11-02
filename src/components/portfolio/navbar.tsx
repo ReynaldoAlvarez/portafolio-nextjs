@@ -18,7 +18,7 @@ const LINKS = [
   { href: "#contacto", label: "Contacto", num: "05" },
 ];
 
-const CV_URL = "/cv-reynaldo-alvarez.pdf";
+const CV_URL = "/resumen-vidal-alvarez-2023.pdf";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -138,8 +138,8 @@ export function Navbar() {
                 transition={{ delay: 0.5 }}
                 className="mt-8 font-mono text-xs leading-relaxed text-zinc-500"
               >
-                <p>GEOPOIS.COM · Madrid, ES</p>
-                <p className="mt-2">EMI · La Paz, BO — 2012</p>
+                <p>Luminia · La Paz, BO — hoy</p>
+                <p className="mt-2">GEOPOIS.COM · Madrid, ES — EMI 2012</p>
               </motion.div>
             </nav>
           </SheetContent>

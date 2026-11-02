@@ -63,7 +63,7 @@ const SERVICES: Service[] = [
     num: "04",
     title: "Geointeligencia",
     sub: "Sistemas geoespaciales a escala",
-    desc: "Lo que hago en GEOPOIS.COM (Madrid): plataformas de GIS, web mapping y geomarketing sobre el stack geoespacial de producción.",
+    desc: "Lo que construí en GEOPOIS.COM (Madrid) como arquitecto principal: plataformas de GIS, web mapping y geomarketing sobre el stack geoespacial de producción.",
     deliverables: [
       "Plataformas GIS",
       "Web mapping interactivo",

@@ -83,9 +83,9 @@ function Magnetic({ children }: { children: React.ReactNode }) {
 }
 
 const STATS = [
-  { n: "14", suf: "+", l: "años de trayectoria" },
-  { n: "25", suf: "", l: "repos públicos" },
-  { big: "GEOPOIS", l: "Madrid · arquitecto" },
+  { n: "12", suf: "+", l: "años de experiencia" },
+  { n: "50", suf: "+", l: "proyectos entregados" },
+  { n: "3", suf: "", l: "países · BO — ES — EEUU" },
   { big: "EMI", l: "La Paz · 2012" },
 ];
 
@@ -148,13 +148,8 @@ export function Hero() {
               className="flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-[13px] text-zinc-500"
             >
               <span>
-                La Paz, BO <span className="text-volt">→</span> Madrid, ES
-              </span>
-              <span className="text-zinc-700" aria-hidden>
-                ·
-              </span>
-              <span>
-                EMI 2012{" "}
+                La Paz, BO <span className="text-volt">·</span> Madrid, ES{" "}
+                <span className="text-zinc-700">·</span> EMI 2012{" "}
                 <span className="text-zinc-700">·</span>{" "}
                 <span className="text-zinc-400">
                   @ReynaldoAlvarez
@@ -190,8 +185,8 @@ export function Hero() {
               ingeniero de software graduado de la EMI (2012). Diseño soluciones a
               medida con las mejores prácticas de la industria — del backend y la
               arquitectura hasta la <span className="text-volt">IA aplicada a la educación</span>.
-              Actualmente arquitecto de software en{" "}
-              <span className="text-zinc-200">GEOPOIS.COM</span> (Madrid).
+              Hoy construyo desde <span className="text-zinc-200">Luminia</span>, tras ser
+              arquitecto principal en <span className="text-zinc-200">GEOPOIS.COM</span> (Madrid).
             </motion.p>
 
             <motion.div
@@ -213,7 +208,7 @@ export function Hero() {
                 </a>
               </Magnetic>
               <a
-                href="/cv-reynaldo-alvarez.pdf"
+                href="/resumen-vidal-alvarez-2023.pdf"
                 download
                 className="inline-flex items-center gap-2.5 rounded-full border border-white/15 px-7 py-3.5 font-display text-base font-semibold text-zinc-200 transition-colors duration-300 hover:border-volt/60 hover:text-volt"
               >
@@ -237,10 +232,10 @@ export function Hero() {
             />
             <figure className="group relative overflow-hidden rounded-[2rem] border border-white/10 bg-ink-2">
               <Image
-                src="/images/reynaldo.jpg"
+                src="/images/profile/vidal-profile-4x5.webp"
                 alt="Retrato de Vidal Reynaldo Alvarez Challco"
-                width={900}
-                height={900}
+                width={819}
+                height={1024}
                 priority
                 sizes="(max-width: 1024px) 80vw, 360px"
                 className="aspect-[4/5] w-full object-cover grayscale contrast-[1.03] transition-all duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:grayscale-0"

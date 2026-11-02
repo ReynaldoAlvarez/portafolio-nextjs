@@ -1,9 +1,12 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Download, Github, Linkedin, Youtube } from "lucide-react";
+import { Check, Copy, Download, Github, Linkedin, Mail, Youtube } from "lucide-react";
 import { Reveal } from "./reveal";
 import { SectionHeading } from "./section-heading";
+
+const EMAIL = "vidal.r.a.777@gmail.com";
 
 const SOCIALS = [
   {
@@ -27,6 +30,8 @@ const SOCIALS = [
 ];
 
 export function Contact() {
+  const [copied, setCopied] = useState(false);
+
   return (
     <section id="contacto" className="relative overflow-hidden py-28 md:py-40">
       {/* Glow ambiental */}
@@ -53,31 +58,66 @@ export function Contact() {
           </h3>
         </Reveal>
 
-        {/* CV destacado */}
-        <Reveal delay={0.12}>
-          <a
-            href="/cv-reynaldo-alvarez.pdf"
-            download
-            data-cursor
-            className="group mt-14 flex max-w-2xl flex-col gap-5 rounded-2xl border border-white/10 bg-white/[0.02] p-7 transition-colors duration-300 hover:border-volt/50 md:flex-row md:items-center md:justify-between md:p-8"
-          >
-            <div className="flex items-center gap-5">
-              <span className="grid size-14 shrink-0 place-items-center rounded-2xl bg-volt text-[#0a0a0b] transition-shadow duration-300 group-hover:shadow-[0_0_32px_rgba(200,245,80,0.4)]">
-                <Download className="size-6" aria-hidden />
+        {/* Email + CV */}
+        <Reveal delay={0.1}>
+          <div className="mt-14 grid max-w-4xl gap-4 md:grid-cols-2">
+            {/* Email con copiar */}
+            <button
+              type="button"
+              data-cursor
+              onClick={() => {
+                navigator.clipboard
+                  .writeText(EMAIL)
+                  .then(() => setCopied(true))
+                  .catch(() => setCopied(false));
+              }}
+              className="group flex items-center justify-between gap-4 rounded-2xl border border-white/10 bg-white/[0.02] p-6 text-left transition-colors duration-300 hover:border-volt/50"
+            >
+              <span className="flex min-w-0 items-center gap-4">
+                <span className="grid size-12 shrink-0 place-items-center rounded-2xl border border-white/15 text-zinc-300 transition-colors duration-300 group-hover:border-volt/60 group-hover:text-volt">
+                  <Mail className="size-5" aria-hidden />
+                </span>
+                <span className="min-w-0">
+                  <span className="block font-display text-base font-semibold text-zinc-100">
+                    {copied ? "¡Copiado al portapapeles!" : EMAIL}
+                  </span>
+                  <span className="mt-0.5 block font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-500">
+                    {copied ? "escríbeme cuando quieras" : "clic para copiar"}
+                  </span>
+                </span>
               </span>
-              <div>
-                <p className="font-display text-lg font-semibold tracking-tight text-zinc-100">
-                  Descarga mi CV
-                </p>
-                <p className="mt-1 font-mono text-xs text-zinc-500">
-                  PDF · 1 página · datos verificables
-                </p>
-              </div>
-            </div>
-            <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-zinc-500 transition-colors group-hover:text-volt">
-              cv-reynaldo-alvarez.pdf →
-            </span>
-          </a>
+              {copied ? (
+                <Check className="size-5 shrink-0 text-volt" aria-hidden />
+              ) : (
+                <Copy className="size-5 shrink-0 text-zinc-500 transition-colors group-hover:text-volt" aria-hidden />
+              )}
+            </button>
+
+            {/* CV descargable */}
+            <a
+              href="/resumen-vidal-alvarez-2023.pdf"
+              download
+              data-cursor
+              className="group flex items-center justify-between gap-4 rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition-colors duration-300 hover:border-volt/50"
+            >
+              <span className="flex items-center gap-4">
+                <span className="grid size-12 shrink-0 place-items-center rounded-2xl bg-volt text-[#0a0a0b] transition-shadow duration-300 group-hover:shadow-[0_0_32px_rgba(200,245,80,0.4)]">
+                  <Download className="size-5" aria-hidden />
+                </span>
+                <span>
+                  <span className="block font-display text-base font-semibold text-zinc-100">
+                    Descargar CV
+                  </span>
+                  <span className="mt-0.5 block font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-500">
+                    PDF · 2 páginas · datos verificables
+                  </span>
+                </span>
+              </span>
+              <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-zinc-500 transition-colors group-hover:text-volt">
+                PDF ↓
+              </span>
+            </a>
+          </div>
         </Reveal>
 
         {/* Redes reales */}

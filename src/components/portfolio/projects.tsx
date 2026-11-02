@@ -17,24 +17,26 @@ type Project = {
   tags: string[];
   metric: string;
   metricLabel: string;
+  status: { label: string; live?: boolean };
   links: ProjectLink[];
   span: string;
   sizes: string;
 };
 
+/* Proyectos verificados: enlaces comprobados en producción (oct. 2026) */
 const PROJECTS: Project[] = [
   {
     img: "/images/proj-luminia.jpg",
     alt: "Arquitectura backend de Luminia: nodos de IA conectando paneles de código y terminales",
-    title: "Luminia",
-    cat: "SaaS · Educación",
-    desc: "API SaaS para educación con inteligencia artificial integrada. TypeScript, Prisma y Docker, desplegada en Vercel — mi proyecto insignia del dominio educativo.",
-    tags: ["TypeScript", "Prisma", "Docker", "Vercel"],
+    title: "Luminia — SaaS Educativo con IA",
+    cat: "Backend SaaS · Educación",
+    desc: "Mi proyecto insignia: API SaaS multi-tenant para instituciones educativas con IA integrada. Express 5, Prisma 6, JWT, Zod, tests con Jest y despliegue con Docker + CI/CD.",
+    tags: ["TypeScript", "Express 5", "Prisma 6", "PostgreSQL", "Docker"],
     metric: "IA",
     metricLabel: "integrada en el core",
+    status: { label: "Producción" },
     links: [
       { label: "Código", href: "https://github.com/ReynaldoAlvarez/api-edu-saas-luminia" },
-      { label: "Demo", href: "https://api-edu-saas-luminia.vercel.app" },
     ],
     span: "lg:col-span-7",
     sizes: "(max-width: 1024px) 100vw, 58vw",
@@ -43,42 +45,79 @@ const PROJECTS: Project[] = [
     img: "/images/proj-geopois.jpg",
     alt: "Mapa mundial con puntos de datos y arcos de conexión: plataforma de geointeligencia de GEOPOIS",
     title: "GEOPOIS",
-    cat: "Geointeligencia",
-    desc: "Arquitectura de plataformas de geointeligencia en Madrid: GIS, web mapping, geomarketing y web scraping sobre PostgreSQL/PostGIS.",
-    tags: ["PostgreSQL", "PostGIS", "GIS"],
-    metric: "Madrid",
-    metricLabel: "arquitecto de software",
-    links: [{ label: "Sitio", href: "https://geopois.com" }],
-    span: "lg:col-span-5",
-    sizes: "(max-width: 1024px) 100vw, 40vw",
-  },
-  {
-    img: "/images/proj-gmaps.jpg",
-    alt: "Interfaz de mapa minimalista con marcadores de ruta y módulos utilitarios de JavaScript",
-    title: "GMaps Utilities",
-    cat: "Open Source",
-    desc: "Utilidades y mejoras sobre la librería oficial de Google Maps JavaScript API v3 — contribuciones al ecosistema de web mapping.",
-    tags: ["JavaScript", "GIS", "Open Source"],
-    metric: "v3",
-    metricLabel: "Google Maps JS API",
+    cat: "Geointeligencia · Madrid",
+    desc: "Plataforma geoespacial que arquitecturé como ingeniero principal: visores web mapping, PostgreSQL/PostGIS, geomarketing y servicios en AWS y Google Cloud.",
+    tags: ["PostgreSQL", "PostGIS", "Node.js", "AWS"],
+    metric: "GIS",
+    metricLabel: "geointeligencia",
+    status: { label: "Producción", live: true },
     links: [
-      { label: "Código", href: "https://github.com/ReynaldoAlvarez/v3-utility-library" },
+      { label: "Sitio", href: "https://geopois.com" },
+      { label: "Código", href: "https://github.com/ReynaldoAlvarez/lefleat-react-map" },
     ],
     span: "lg:col-span-5",
     sizes: "(max-width: 1024px) 100vw, 40vw",
   },
   {
-    img: "/images/proj-bunkerdev.jpg",
-    alt: "Estudio de código con pantalla mostrando código y botón de reproducción: canal BunkerDev",
-    title: "BunkerDev",
-    cat: "Educación tech",
-    desc: "Canal de contenido formativo de tecnología: la educación es mi dominio — también enseñando cómo se construye.",
-    tags: ["Contenido", "Educación", "Tech"],
-    metric: "YouTube",
-    metricLabel: "@bunkerdev",
-    links: [{ label: "Canal", href: "https://www.youtube.com/@bunkerdev" }],
+    img: "/images/proj-bunkerbible.jpg",
+    alt: "Biblioteca digital de contenido con ondas de audio y reproductor de podcasts",
+    title: "BunkerBible",
+    cat: "Plataforma de contenido",
+    desc: "Servicio digital en producción: podcasts, sermones, estudios bíblicos y audiolibros categorizados por autor y tema, con recomendaciones personalizadas y rankings.",
+    tags: ["Next.js", "React", "Netlify"],
+    metric: "2022",
+    metricLabel: "en producción",
+    status: { label: "Producción", live: true },
+    links: [{ label: "Ver sitio", href: "https://bunkerbible.netlify.app" }],
+    span: "lg:col-span-5",
+    sizes: "(max-width: 1024px) 100vw, 40vw",
+  },
+  {
+    img: "/images/proj-emaillite.jpg",
+    alt: "Microservicio de correo: sobres luminosos viajando por un pipeline serverless de nodos",
+    title: "Email Lite — Microservicio",
+    cat: "Backend · Serverless",
+    desc: "Microservicio de notificaciones con responsabilidad única: envío de correo con Nodemailer y SMTP de Google, API REST minimalista y despliegue serverless en Vercel.",
+    tags: ["TypeScript", "Nodemailer", "SMTP", "Vercel"],
+    metric: "API",
+    metricLabel: "serverless · Vercel",
+    status: { label: "Producción", live: true },
+    links: [
+      { label: "Demo", href: "https://email-lite.vercel.app" },
+      { label: "Código", href: "https://github.com/ReynaldoAlvarez/email-lite" },
+    ],
     span: "lg:col-span-7",
     sizes: "(max-width: 1024px) 100vw, 58vw",
+  },
+  {
+    img: "/images/proj-gmaps.jpg",
+    alt: "Interfaz de mapa con marcadores de ruta para plataforma de movilidad",
+    title: "ZMove — Movilidad",
+    cat: "Mobile · Ride-sharing",
+    desc: "Plataforma de movilidad lanzada en 2022: conductores publican viajes, pasajeros encuentran opciones según su geolocalización. Backend Node.js + MongoDB, app Flutter iOS/Android, AWS.",
+    tags: ["Flutter", "Node.js", "MongoDB", "AWS", "Google Maps"],
+    metric: "iOS·Android",
+    metricLabel: "app Flutter",
+    status: { label: "Lanzada 2022" },
+    links: [],
+    span: "lg:col-span-6",
+    sizes: "(max-width: 1024px) 100vw, 48vw",
+  },
+  {
+    img: "/images/proj-apitemplarios.jpg",
+    alt: "Anillos concéntricos de capas de software: arquitectura hexagonal limpia",
+    title: "Apitemplarios",
+    cat: "Backend · Clean Architecture",
+    desc: "Backend empresarial open source con arquitectura hexagonal y DDD: capas core/infrastructure/modules/shared, logging con Pino, validación Zod y seguridad JWT + bcrypt.",
+    tags: ["TypeScript", "Clean Architecture", "DDD", "Pino", "Zod"],
+    metric: "DDD",
+    metricLabel: "arquitectura hexagonal",
+    status: { label: "Open Source" },
+    links: [
+      { label: "Código", href: "https://github.com/ReynaldoAlvarez/apitemplarios" },
+    ],
+    span: "lg:col-span-6",
+    sizes: "(max-width: 1024px) 100vw, 48vw",
   },
 ];
 
@@ -117,6 +156,20 @@ function ProjectCard({ p, i }: { p: Project; i: number }) {
           <span className="absolute left-4 top-4 rounded-full border border-white/15 bg-black/45 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-300 backdrop-blur">
             {p.cat}
           </span>
+          {/* Estado: en producción / lanzada / open source */}
+          <span
+            className={`absolute right-4 top-4 flex items-center gap-2 rounded-full border px-3 py-1 font-mono text-[10px] uppercase tracking-[0.16em] backdrop-blur ${
+              p.status.live
+                ? "border-volt/40 bg-volt/10 text-volt"
+                : "border-white/15 bg-black/45 text-zinc-300"
+            }`}
+          >
+            <span
+              className={`size-1.5 rounded-full ${p.status.live ? "dot-ping relative bg-volt" : "bg-zinc-400"}`}
+              aria-hidden
+            />
+            {p.status.label}
+          </span>
           <span className="absolute bottom-4 right-4 flex items-baseline gap-2 rounded-full border border-white/10 bg-black/45 px-3.5 py-1.5 backdrop-blur">
             <span className="font-display text-lg font-semibold text-volt">
               {p.metric}
@@ -140,7 +193,7 @@ function ProjectCard({ p, i }: { p: Project; i: number }) {
             {p.desc}
           </p>
 
-          {/* Tags + links reales */}
+          {/* Tags */}
           <div className="mt-5 flex flex-wrap gap-2">
             {p.tags.map((t) => (
               <span
@@ -151,20 +204,24 @@ function ProjectCard({ p, i }: { p: Project; i: number }) {
               </span>
             ))}
           </div>
-          <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 border-t border-white/10 pt-4">
-            {p.links.map((l) => (
-              <a
-                key={l.label}
-                href={l.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-[0.16em] text-zinc-400 transition-colors hover:text-volt"
-              >
-                {l.label}
-                <ArrowUpRight className="size-3.5" aria-hidden />
-              </a>
-            ))}
-          </div>
+
+          {/* Links */}
+          {p.links.length > 0 && (
+            <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 border-t border-white/10 pt-4">
+              {p.links.map((l) => (
+                <a
+                  key={l.label}
+                  href={l.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-[0.16em] text-zinc-400 transition-colors hover:text-volt"
+                >
+                  {l.label}
+                  <ArrowUpRight className="size-3.5" aria-hidden />
+                </a>
+              ))}
+            </div>
+          )}
         </div>
       </article>
     </Reveal>
@@ -173,7 +230,7 @@ function ProjectCard({ p, i }: { p: Project; i: number }) {
 
 export function Projects() {
   return (
-    <section id="proyectos" className="relative py-24 md:py-36">
+    <section id="proyectos" className="relative py-24 md:py-36" aria-label="Proyectos en producción">
       <div className="mx-auto max-w-7xl px-6">
         <Reveal>
           <SectionHeading
@@ -182,7 +239,7 @@ export function Projects() {
             label="Proyectos"
             title={
               <>
-                Trabajo <span className="text-outline-volt">real</span>
+                Lanzados y en <span className="text-outline-volt">producción</span>
               </>
             }
           />
@@ -190,8 +247,9 @@ export function Projects() {
 
         <Reveal delay={0.06}>
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-zinc-400">
-            Proyectos verificables con enlaces directos: código en GitHub,
-            plataformas en producción y contenido publicado.
+            Proyectos individuales de gran envergadura y plataformas a medida,
+            verificados con enlaces vivos: código en GitHub y sistemas corriendo
+            en producción.
           </p>
         </Reveal>
 
