@@ -1,43 +1,14 @@
 'use client'
 
-import { motion, useInView, useMotionValue, useSpring } from 'framer-motion'
-import { useEffect, useRef } from 'react'
-import { GraduationCap, Code2, Users, GitBranch } from 'lucide-react'
+import { motion } from 'framer-motion'
 import { profile } from '@/lib/portfolio-data'
-import { Card } from '@/components/ui/card'
-
-const statIcons = [Code2, Users, GraduationCap, GitBranch]
-
-function AnimatedNumber({ value, suffix }: { value: number; suffix: string }) {
-  const ref = useRef<HTMLSpanElement>(null)
-  const motionValue = useMotionValue(0)
-  const springValue = useSpring(motionValue, { duration: 2000 })
-  const isInView = useInView(ref, { once: true })
-
-  useEffect(() => {
-    if (isInView) {
-      motionValue.set(value)
-    }
-  }, [isInView, value, motionValue])
-
-  useEffect(() => {
-    const unsubscribe = springValue.on('change', (latest) => {
-      if (ref.current) {
-        ref.current.textContent = Math.floor(latest).toString() + suffix
-      }
-    })
-    return () => unsubscribe()
-  }, [springValue, suffix])
-
-  return <span ref={ref}>0{suffix}</span>
-}
+import { SectionHeading } from './section-heading'
 
 const tags = [
   'Clean Architecture',
   'SaaS Multi-tenant',
   'Inteligencia Artificial',
   'DevOps',
-  'TypeScript',
   'Angular',
   'Flutter',
   'Prisma ORM',
@@ -47,161 +18,101 @@ const tags = [
 
 export function About() {
   return (
-    <section id="sobre-mi" className="section-anchor py-20 lg:py-28 relative overflow-hidden">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Section header with gradient line */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
-        >
-          <motion.span
-            initial={{ scale: 0.8, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ type: 'spring', stiffness: 200, damping: 20 }}
-            className="inline-block text-sm font-semibold uppercase tracking-widest text-primary bg-primary/10 px-3 py-1 rounded-full mb-4 font-mono"
-          >
-            {'// sobre_mi'}
-          </motion.span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">
-            Pasión por construir software con{' '}
-            <span className="gradient-text">impacto</span>
-          </h2>
-          <motion.div
-            initial={{ width: 0 }}
-            whileInView={{ width: '60px' }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="h-1 bg-gradient-to-r from-primary to-accent mx-auto mt-4 rounded-full"
-          />
-        </motion.div>
+    <section
+      id="sobre-mi"
+      className="section-anchor scroll-mt-24 py-20 lg:py-28"
+    >
+      <div className="container-portfolio">
+        <SectionHeading
+          index="01"
+          eyebrow="Sobre mí"
+          title={
+            <>
+              Software con{' '}
+              <em className="font-light italic">impacto</em> real
+            </>
+          }
+          className="mb-12 lg:mb-16"
+        />
 
-        <div className="grid lg:grid-cols-5 gap-8 items-start">
-          {/* Bio text with staggered paragraphs */}
+        <div className="grid gap-12 lg:grid-cols-[1fr_300px] lg:gap-16">
+          {/* Bio — first paragraph larger, editorial measure */}
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: '-100px' }}
+            viewport={{ once: true, margin: '-80px' }}
             variants={{
               hidden: { opacity: 0 },
-              visible: {
-                opacity: 1,
-                transition: { staggerChildren: 0.2 },
-              },
+              visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
             }}
-            className="lg:col-span-3 space-y-4"
+            className="max-w-[62ch]"
           >
             {profile.bio.map((paragraph, idx) => (
               <motion.p
                 key={idx}
                 variants={{
-                  hidden: { opacity: 0, x: -30, filter: 'blur(4px)' },
+                  hidden: { opacity: 0, y: 12 },
                   visible: {
                     opacity: 1,
-                    x: 0,
-                    filter: 'blur(0px)',
-                    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const },
+                    y: 0,
+                    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
                   },
                 }}
-                className="text-base lg:text-lg text-muted-foreground leading-relaxed"
+                className={
+                  idx === 0
+                    ? 'text-lg leading-relaxed text-foreground/90'
+                    : 'mt-5 text-[15px] leading-relaxed text-muted-foreground'
+                }
               >
                 {paragraph}
               </motion.p>
             ))}
 
-            {/* Animated tags */}
+            {/* Focus tags — quiet chips */}
             <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
               variants={{
-                hidden: { opacity: 0 },
-                visible: {
-                  opacity: 1,
-                  transition: { staggerChildren: 0.05, delayChildren: 0.4 },
-                },
+                hidden: { opacity: 0, y: 8 },
+                visible: { opacity: 1, y: 0 },
               }}
-              className="flex flex-wrap gap-2 pt-4"
+              className="mt-8 flex flex-wrap gap-2"
             >
               {tags.map((tag) => (
-                <motion.span
-                  key={tag}
-                  variants={{
-                    hidden: { opacity: 0, scale: 0, y: 10 },
-                    visible: {
-                      opacity: 1,
-                      scale: 1,
-                      y: 0,
-                      transition: { type: 'spring', stiffness: 300, damping: 20 },
-                    },
-                  }}
-                  whileHover={{
-                    scale: 1.1,
-                    backgroundColor: 'rgb(var(--primary) / 0.15)',
-                    color: 'rgb(var(--primary))',
-                  }}
-                  className="px-3 py-1 text-xs font-medium rounded-full bg-secondary text-secondary-foreground border border-border/60 cursor-default transition-colors"
-                >
+                <span key={tag} className="chip">
                   {tag}
-                </motion.span>
+                </span>
               ))}
             </motion.div>
           </motion.div>
 
-          {/* Stats cards with hover effects */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-100px' }}
-            variants={{
-              hidden: { opacity: 0 },
-              visible: {
-                opacity: 1,
-                transition: { staggerChildren: 0.1, delayChildren: 0.2 },
-              },
-            }}
-            className="lg:col-span-2 grid grid-cols-2 gap-4"
+          {/* Stats — tabular display numbers on hairline rules */}
+          <motion.aside
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            aria-label="Cifras profesionales"
           >
-            {profile.stats.map((stat, idx) => {
-              const Icon = statIcons[idx]
-              return (
-                <motion.div
+            <div className="border-t border-border">
+              {profile.stats.map((stat) => (
+                <div
                   key={stat.label}
-                  variants={{
-                    hidden: { opacity: 0, y: 30, scale: 0.8 },
-                    visible: {
-                      opacity: 1,
-                      y: 0,
-                      scale: 1,
-                      transition: { type: 'spring', stiffness: 200, damping: 20 },
-                    },
-                  }}
-                  whileHover={{ y: -5, scale: 1.03 }}
-                  transition={{ type: 'spring', stiffness: 300, damping: 17 }}
+                  className="flex items-baseline justify-between gap-4 border-b border-border py-5"
                 >
-                  <Card className="p-6 hover:shadow-lg transition-shadow hover:border-primary/40 cursor-default group">
-                    <div className="flex flex-col gap-2">
-                      <motion.div
-                        whileHover={{ rotate: 15, scale: 1.2 }}
-                        transition={{ type: 'spring', stiffness: 300 }}
-                      >
-                        <Icon className="h-6 w-6 text-primary" />
-                      </motion.div>
-                      <div className="text-3xl font-bold tracking-tight">
-                        <AnimatedNumber value={stat.value} suffix={stat.suffix} />
-                      </div>
-                      <p className="text-xs text-muted-foreground font-medium">
-                        {stat.label}
-                      </p>
-                    </div>
-                  </Card>
-                </motion.div>
-              )
-            })}
-          </motion.div>
+                  <span className="tnum text-4xl font-medium tracking-tight lg:text-[2.6rem]">
+                    {stat.value}
+                    <span className="text-primary">{stat.suffix}</span>
+                  </span>
+                  <span className="max-w-[9rem] text-right text-[13px] leading-snug text-muted-foreground">
+                    {stat.label}
+                  </span>
+                </div>
+              ))}
+            </div>
+            <p className="mt-4 text-xs leading-relaxed text-muted-foreground">
+              Ingeniero de Sistemas — EMI, La Paz (2012). Trayectoria en
+              Bolivia, España y Estados Unidos.
+            </p>
+          </motion.aside>
         </div>
       </div>
     </section>

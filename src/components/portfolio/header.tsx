@@ -5,36 +5,32 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useTheme } from 'next-themes'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Moon, Sun, Github, Linkedin, Youtube } from 'lucide-react'
+import { Menu, X, Moon, Sun, Download } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
+import { profile } from '@/lib/portfolio-data'
 
 const navLinks = [
   { href: '#inicio', label: 'Inicio' },
   { href: '#sobre-mi', label: 'Sobre mí' },
-  { href: '#destacado', label: 'Proyecto Destacado' },
   { href: '#proyectos', label: 'Proyectos' },
-  { href: '#skills', label: 'Skills' },
+  { href: '#skills', label: 'Stack' },
   { href: '#experiencia', label: 'Experiencia' },
   { href: '#contacto', label: 'Contacto' },
-]
-
-const socialLinks = [
-  { href: 'https://github.com/ReynaldoAlvarez', icon: Github, label: 'GitHub' },
-  { href: 'https://linkedin.com/in/vidal-reynaldo-alvarez-challco-46633584', icon: Linkedin, label: 'LinkedIn' },
-  { href: 'https://youtube.com/@bunkerdev', icon: Youtube, label: 'YouTube' },
 ]
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState('#inicio')
-  const { theme, setTheme } = useTheme()
+  const { resolvedTheme, setTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => setMounted(true), [])
 
   const handleScroll = useCallback(() => {
-    setScrolled(window.scrollY > 20)
+    setScrolled(window.scrollY > 16)
 
-    // Detect active section
     const sections = navLinks.map((l) => l.href.slice(1))
     const offset = window.innerHeight / 3
     for (const id of sections) {
@@ -51,161 +47,156 @@ export function Header() {
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll, { passive: true })
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     handleScroll()
     return () => window.removeEventListener('scroll', handleScroll)
   }, [handleScroll])
 
+  const isDark = resolvedTheme === 'dark'
+
   return (
     <motion.header
-      initial={{ y: -100, opacity: 0 }}
+      initial={{ y: -32, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5, ease: 'easeOut' }}
+      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+        'fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,box-shadow] duration-300',
         scrolled
-          ? 'glass shadow-sm border-b border-border/40 py-1'
-          : 'bg-transparent py-2'
+          ? 'border-b border-border/70 bg-background/90 shadow-2xs backdrop-blur-md'
+          : 'border-b border-transparent bg-transparent'
       )}
     >
-      <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-14 items-center justify-between">
-          {/* Logo with profile image */}
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ type: 'spring', stiffness: 400, damping: 17 }}
-          >
-            <Link href="#inicio" className="flex items-center gap-2.5 group">
-              <div className="relative h-10 w-10 overflow-hidden rounded-full ring-2 ring-primary/30 ring-offset-2 ring-offset-background transition-all group-hover:ring-primary/60">
-                <Image
-                  src="/images/profile/vidal-profile.png"
-                  alt="Vidal Reynaldo Alvarez Challco"
-                  fill
-                  sizes="40px"
-                  className="object-cover"
-                  priority
-                />
-              </div>
-              <div className="flex flex-col leading-none hidden sm:flex">
-                <span className="font-bold text-sm">Vidal Alvarez</span>
-                <span className="text-[10px] text-muted-foreground font-medium">
-                  Software Engineer
-                </span>
-              </div>
-            </Link>
-          </motion.div>
+      <nav className="container-portfolio">
+        <div className="flex h-16 items-center justify-between">
+          {/* Wordmark */}
+          <Link href="#inicio" className="group flex items-center gap-3">
+            <span className="relative block h-9 w-9 overflow-hidden rounded-full shadow-2xs">
+              <Image
+                src="/images/profile/vidal-profile.png"
+                alt=""
+                fill
+                sizes="36px"
+                className="object-cover"
+                priority
+              />
+            </span>
+            <span className="hidden flex-col leading-tight sm:flex">
+              <span className="text-sm font-semibold tracking-tight">
+                {profile.shortName}
+              </span>
+              <span className="text-[11px] text-muted-foreground">
+                Software Engineer
+              </span>
+            </span>
+          </Link>
 
-          {/* Desktop nav with animated underline */}
-          <div className="hidden lg:flex items-center gap-1">
+          {/* Desktop nav — morphing pill (spring, no bounce) */}
+          <div className="hidden items-center gap-0.5 lg:flex">
             {navLinks.map((link) => {
               const isActive = activeSection === link.href
               return (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="relative px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                  className={cn(
+                    'relative rounded-full px-3.5 py-1.5 text-[13px] font-medium transition-colors duration-200',
+                    isActive
+                      ? 'text-foreground'
+                      : 'text-muted-foreground hover:text-foreground'
+                  )}
                 >
-                  {link.label}
                   {isActive && (
                     <motion.span
-                      layoutId="activeNav"
-                      className="absolute inset-0 bg-accent/60 rounded-md -z-10"
-                      transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                      layoutId="nav-pill"
+                      transition={{ type: 'spring', duration: 0.45, bounce: 0.2 }}
+                      className="absolute inset-0 -z-10 rounded-full bg-secondary"
                     />
                   )}
+                  {link.label}
                 </Link>
               )
             })}
           </div>
 
-          {/* Right side */}
+          {/* Right actions */}
           <div className="flex items-center gap-1.5">
-            {/* Social links with hover animations */}
-            <div className="hidden md:flex items-center gap-0.5 mr-1">
-              {socialLinks.map((social) => {
-                const Icon = social.icon
-                return (
-                  <motion.a
-                    key={social.href}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={social.label}
-                    whileHover={{ y: -2, scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    transition={{ type: 'spring', stiffness: 400, damping: 17 }}
-                    className="p-2 rounded-md text-muted-foreground hover:text-primary hover:bg-accent/50 transition-colors"
-                  >
-                    <Icon className="h-4 w-4" />
-                  </motion.a>
-                )
-              })}
-            </div>
+            <Button
+              asChild
+              variant="outline"
+              size="sm"
+              className="hidden h-9 gap-1.5 rounded-full px-4 text-[13px] font-medium md:inline-flex"
+            >
+              <a
+                href={profile.resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Download className="h-3.5 w-3.5" />
+                CV
+              </a>
+            </Button>
 
-            {/* Theme toggle with smooth animation */}
             <Button
               variant="ghost"
               size="icon"
-              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              onClick={() => setTheme(isDark ? 'light' : 'dark')}
               aria-label="Cambiar tema"
-              className="h-9 w-9 relative overflow-hidden"
+              className="h-9 w-9 rounded-full"
               suppressHydrationWarning
             >
               <AnimatePresence mode="wait" initial={false}>
-                {theme === 'dark' ? (
-                  <motion.div
+                {mounted && isDark ? (
+                  <motion.span
                     key="moon"
-                    initial={{ y: -20, opacity: 0, rotate: -90 }}
-                    animate={{ y: 0, opacity: 1, rotate: 0 }}
-                    exit={{ y: 20, opacity: 0, rotate: 90 }}
-                    transition={{ duration: 0.2 }}
+                    initial={{ opacity: 0, rotate: -45, scale: 0.8 }}
+                    animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                    exit={{ opacity: 0, rotate: 45, scale: 0.8 }}
+                    transition={{ duration: 0.18 }}
                   >
                     <Moon className="h-4 w-4" />
-                  </motion.div>
+                  </motion.span>
                 ) : (
-                  <motion.div
+                  <motion.span
                     key="sun"
-                    initial={{ y: -20, opacity: 0, rotate: 90 }}
-                    animate={{ y: 0, opacity: 1, rotate: 0 }}
-                    exit={{ y: 20, opacity: 0, rotate: -90 }}
-                    transition={{ duration: 0.2 }}
+                    initial={{ opacity: 0, rotate: 45, scale: 0.8 }}
+                    animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                    exit={{ opacity: 0, rotate: -45, scale: 0.8 }}
+                    transition={{ duration: 0.18 }}
                   >
                     <Sun className="h-4 w-4" />
-                  </motion.div>
+                  </motion.span>
                 )}
               </AnimatePresence>
             </Button>
 
-            {/* Mobile menu toggle */}
             <Button
               variant="ghost"
               size="icon"
-              className="lg:hidden h-9 w-9"
+              className="h-9 w-9 rounded-full lg:hidden"
               onClick={() => setIsOpen(!isOpen)}
               aria-label="Menú"
+              aria-expanded={isOpen}
             >
               <AnimatePresence mode="wait" initial={false}>
                 {isOpen ? (
-                  <motion.div
+                  <motion.span
                     key="x"
-                    initial={{ rotate: -90, opacity: 0 }}
-                    animate={{ rotate: 0, opacity: 1 }}
-                    exit={{ rotate: 90, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
+                    initial={{ opacity: 0, rotate: -90 }}
+                    animate={{ opacity: 1, rotate: 0 }}
+                    exit={{ opacity: 0, rotate: 90 }}
+                    transition={{ duration: 0.16 }}
                   >
-                    <X className="h-5 w-5" />
-                  </motion.div>
+                    <X className="h-4.5 w-4.5" />
+                  </motion.span>
                 ) : (
-                  <motion.div
+                  <motion.span
                     key="menu"
-                    initial={{ rotate: 90, opacity: 0 }}
-                    animate={{ rotate: 0, opacity: 1 }}
-                    exit={{ rotate: -90, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
+                    initial={{ opacity: 0, rotate: 90 }}
+                    animate={{ opacity: 1, rotate: 0 }}
+                    exit={{ opacity: 0, rotate: -90 }}
+                    transition={{ duration: 0.16 }}
                   >
-                    <Menu className="h-5 w-5" />
-                  </motion.div>
+                    <Menu className="h-4.5 w-4.5" />
+                  </motion.span>
                 )}
               </AnimatePresence>
             </Button>
@@ -213,64 +204,57 @@ export function Header() {
         </div>
       </nav>
 
-      {/* Mobile menu with staggered animation */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.25, ease: 'easeInOut' }}
-            className="lg:hidden overflow-hidden glass border-t border-border/40"
-          >
-            <div className="px-4 py-4 space-y-1">
+      {/* Mobile menu — height via grid-rows (no layout thrash) */}
+      <div
+        className={cn(
+          'grid overflow-hidden transition-[grid-template-rows] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] lg:hidden',
+          isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
+        )}
+      >
+        <div className="min-h-0">
+          <div className="border-t border-border/70 bg-background/95 backdrop-blur-md">
+            <div className="container-portfolio flex flex-col gap-0.5 py-4">
               {navLinks.map((link, idx) => (
                 <motion.div
                   key={link.href}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: idx * 0.05 }}
+                  initial={false}
+                  animate={
+                    isOpen
+                      ? { opacity: 1, y: 0 }
+                      : { opacity: 0, y: 6 }
+                  }
+                  transition={{ delay: isOpen ? idx * 0.03 : 0, duration: 0.25 }}
                 >
                   <Link
                     href={link.href}
                     onClick={() => setIsOpen(false)}
                     className={cn(
-                      'block px-3 py-2.5 text-sm font-medium rounded-md transition-colors',
+                      'flex items-center justify-between rounded-lg px-3 py-2.5 text-[15px] font-medium transition-colors',
                       activeSection === link.href
-                        ? 'text-primary bg-accent/50'
-                        : 'text-muted-foreground hover:text-foreground hover:bg-accent/50'
+                        ? 'bg-secondary text-foreground'
+                        : 'text-muted-foreground hover:bg-secondary/60 hover:text-foreground'
                     )}
                   >
                     {link.label}
+                    <span className="font-mono text-[10px] text-muted-foreground tnum">
+                      0{idx + 1}
+                    </span>
                   </Link>
                 </motion.div>
               ))}
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: navLinks.length * 0.05 }}
-                className="flex items-center gap-2 pt-3 mt-3 border-t border-border/40"
+              <a
+                href={profile.resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-3 flex items-center gap-2 rounded-lg border border-border px-3 py-2.5 text-[15px] font-medium"
               >
-                {socialLinks.map((social) => {
-                  const Icon = social.icon
-                  return (
-                    <a
-                      key={social.href}
-                      href={social.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={social.label}
-                      className="p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-accent/50 transition-colors"
-                    >
-                      <Icon className="h-4 w-4" />
-                    </a>
-                  )
-                })}
-              </motion.div>
+                <Download className="h-4 w-4" />
+                Descargar CV
+              </a>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          </div>
+        </div>
+      </div>
     </motion.header>
   )
 }
